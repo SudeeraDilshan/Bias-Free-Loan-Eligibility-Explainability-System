@@ -1,0 +1,56 @@
+{
+  "Gender": {
+    "demographic_parity": {
+      "approval_rates": {
+        "Male": 0.7868852459016393,
+        "Female": 0.6666666666666666
+      },
+      "dp_difference": 0.1202185792349727,
+      "is_fair": false
+    },
+    "equal_opportunity": {
+      "tpr_rates": {
+        "Male": 0.9767441860465116,
+        "Female": 0.8
+      },
+      "eod_difference": 0.17674418604651154,
+      "is_fair": false
+    },
+    "disparate_impact": {
+      "selection_rates": {
+        "Female": 0.6666666666666666,
+        "Male": 0.7868852459016393
+      },
+      "di_ratio": 0.8472222222222222,
+      "is_fair": true
+    },
+    "overall_bias_level": "\u26a0 CAUTION"
+  },
+  "Married": {
+    "demographic_parity": {
+      "approval_rates": {
+        "No": 0.7169811320754716,
+        "Yes": 0.7659574468085106
+      },
+      "dp_difference": 0.048976314733038984,
+      "is_fair": true
+    },
+    "equal_opportunity": {
+      "tpr_rates": {
+        "No": 0.9411764705882353,
+        "Yes": 0.8823529411764706
+      },
+      "eod_difference": 0.05882352941176472,
+      "is_fair": true
+    },
+    "disparate_impact": {
+      "selection_rates": {
+        "No": 0.7169811320754716,
+        "Yes": 0.7659574468085106
+      },
+      "di_ratio": 0.9360587002096435,
+      "is_fair": true
+    },
+    "overall_bias_level": "\u2713 FAIR"
+  }
+}
