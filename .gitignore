@@ -30,6 +30,7 @@ data/processed/
 ml/models/*.pkl
 ml/models/*.joblib
 ml/models/*.xgb
+ml/llm_models/*
 
 # IDE
 .vscode/

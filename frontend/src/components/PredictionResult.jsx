@@ -58,6 +58,21 @@ const PredictionResult = ({ prediction }) => {
           </p>
         </div>
 
+        {prediction.llm_explanation && (
+          <div className="llm-section">
+            <div className="llm-header">
+              <span className="llm-icon">🤖</span>
+              <h3>Local AI Summary</h3>
+              <span className="llm-badge">OFFLINE</span>
+            </div>
+            <div className="llm-content">
+              <p className="llm-text">
+                {prediction.llm_explanation}
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="decision-timestamp">
           <small>Decision made: {new Date(prediction.timestamp).toLocaleString()}</small>
         </div>

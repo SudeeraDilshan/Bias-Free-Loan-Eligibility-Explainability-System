@@ -42,6 +42,7 @@ class PredictionResponse(BaseModel):
     risk_level: str  # "Low", "Medium", "High"
     top_factors: List[Dict[str, Any]]
     reasoning_summary: str
+    llm_explanation: str | None = None
     timestamp: str
 
     class Config:

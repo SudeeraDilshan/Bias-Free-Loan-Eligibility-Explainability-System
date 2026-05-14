@@ -5,6 +5,7 @@ import numpy as np
 
 from app.schemas.loan import LoanApplicationInput, PredictionResponse, ReportResponse
 from app.services.model_manager import model_manager
+from app.services.llm_explainer import llm_explainer
 from app.utils.processing import preprocess_application, generate_reasoning_text
 
 router = APIRouter()
@@ -62,6 +63,13 @@ async def predict_loan_eligibility(application: LoanApplicationInput) -> Predict
         }
         reasoning_summary = generate_reasoning_text(explanation)
         
+        # Generate LLM explanation
+        llm_explanation = llm_explainer.generate_explanation(
+            prediction='Approved' if prediction == 1 else 'Rejected',
+            probability=float(approval_prob),
+            top_factors=top_factors
+        )
+        
         return PredictionResponse(
             loan_id=loan_id,
             prediction='Approved' if prediction == 1 else 'Rejected',
@@ -71,6 +79,7 @@ async def predict_loan_eligibility(application: LoanApplicationInput) -> Predict
             risk_level=risk_level,
             top_factors=top_factors,
             reasoning_summary=reasoning_summary,
+            llm_explanation=llm_explanation,
             timestamp=datetime.now().isoformat()
         )
     

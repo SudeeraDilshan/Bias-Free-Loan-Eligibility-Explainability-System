@@ -14,6 +14,7 @@ if base_dir not in sys.path:
     sys.path.append(base_dir)
 
 from app.services.model_manager import model_manager
+from app.services.llm_explainer import llm_explainer
 from app.routes.health import router as health_router
 from app.routes.predictions import router as predictions_router
 
@@ -53,10 +54,12 @@ app.include_router(predictions_router, tags=["Predictions"])
 @app.on_event("startup")
 async def startup_event():
     model_manager.load_models()
+    llm_explainer.load_model()
 
 if __name__ == "__main__":
     # Load models on startup
     model_manager.load_models()
+    llm_explainer.load_model()
     
     # Run server
     import uvicorn

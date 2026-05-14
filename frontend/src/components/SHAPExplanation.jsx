@@ -46,19 +46,6 @@ const SHAPExplanation = ({ prediction }) => {
           ))}
         </div>
 
-        <div className="shap-explanation">
-          <h3>💡 What is SHAP?</h3>
-          <p>
-            SHAP (Shapley Additive exPlanations) uses game theory to explain predictions.
-            Each feature's importance is calculated based on its contribution to the final 
-            decision, considering all possible combinations of features.
-          </p>
-          <ul>
-            <li><strong>Positive Impact:</strong> Increases loan approval chances</li>
-            <li><strong>Negative Impact:</strong> Decreases loan approval chances</li>
-            <li><strong>SHAP Value:</strong> Quantifies the magnitude of each factor's influence</li>
-          </ul>
-        </div>
       </div>
     </div>
   );

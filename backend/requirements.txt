@@ -19,3 +19,8 @@ python-dotenv==1.0.0
 joblib==1.3.2
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
+
+# Local AI Support
+transformers>=4.40.0
+accelerate>=0.29.0
+torch>=2.0.0
