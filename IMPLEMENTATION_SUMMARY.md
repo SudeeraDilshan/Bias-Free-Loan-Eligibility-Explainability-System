@@ -9,10 +9,20 @@
 This project implements a **complete end-to-end machine learning system** for loan eligibility prediction that combines:
 
 - **Explainability (XAI)**: SHAP (Shapley Additive Explanations) for transparent decision-making
+- **Local AI (SLM)**: Natural language decision summaries powered by an offline Small Language Model (Qwen2.5-0.5B)
 - **Fairness**: Bias detection using demographic parity, equal opportunity, and disparate impact metrics
 - **Performance**: XGBoost classifier with hyperparameter optimization
 - **Production**: Full-stack web application with Docker deployment
 - **Compliance**: GDPR-ready audit trails and fairness documentation
+
+---
+
+## 🛠️ Recent Enhancements & Fixes (May 2026)
+
+- **Local AI Summary Engine**: Integrated `transformers` and `Qwen2.5-0.5B` to provide empathetic, human-readable summaries of loan decisions entirely offline.
+- **Windows Deployment Fixes**: Resolved `WinError 1114` (DLL initialization failures) by optimizing `torch` library loading sequence.
+- **Path Resolution Optimization**: Refactored the training pipeline and backend model manager to use absolute path resolution, allowing the system to be run from any directory.
+- **Portability**: Configured the LLM to download and store models inside the project folder (`ml/llm_models/`) for true offline portability.
 
 ---
 

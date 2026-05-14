@@ -101,6 +101,7 @@ Get loan eligibility prediction with SHAP explanation and top contributing facto
     }
   ],
   "reasoning_summary": "Loan rejected mainly due to low income...",
+  "llm_explanation": "Based on our analysis, your loan application has been rejected. The primary factor was your applicant income, which is currently below the threshold required for the requested loan amount.",
   "timestamp": "2026-04-17T10:30:00Z"
 }
 ```
@@ -116,7 +117,8 @@ Get loan eligibility prediction with SHAP explanation and top contributing facto
 | confidence_score | float | Model confidence (0-1) |
 | risk_level | string | "Low", "Medium", or "High" |
 | top_factors | array | Top 5 contributing factors |
-| reasoning_summary | string | Human-readable explanation |
+| reasoning_summary | string | Technical reasoning summary |
+| llm_explanation | string | **[NEW]** Natural language AI summary (Offline SLM) |
 | timestamp | string | ISO 8601 timestamp |
 
 **SHAP Factor Explanation**:

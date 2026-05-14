@@ -30,23 +30,23 @@ python -m venv venv
 
 # Activate environment
 # Windows:
-venv\Scripts\activate
+.\backend\venv\Scripts\activate
 # macOS/Linux:
 source venv/bin/activate
 
-# Install dependencies
+# Install dependencies (from root or backend folder)
+pip install -r backend/requirements.txt
+
+# 1. Train Model (Must be run from /ml directory for path consistency)
+cd ml
+python training_pipeline.py --data-path data/loan_data.csv --output-dir models
+cd ..
+
+# 2. Start Backend
 cd backend
-pip install -r requirements.txt
-
-# Download and prepare dataset
-python ../ml/download_dataset.py
-
-# Train model (first time only)
-python ../ml/train_model.py
-
-# Start backend
 uvicorn app.main:app --reload --port 8000
 ```
+*Note: On first start, the backend will download the Qwen model (~900MB) into `ml/llm_models/`.*
 
 #### 3. Frontend Setup
 

@@ -7,6 +7,7 @@
 This is a complete end-to-end machine learning system for loan eligibility prediction that combines:
 
 - **Explainability**: SHAP (Shapley Additive Explanations) values to explain individual predictions
+- **Local AI**: Natural language decision summaries powered by an offline Small Language Model (Qwen2.5-0.5B)
 - **Fairness**: Bias detection and mitigation using demographic parity, equal opportunity metrics
 - **Performance**: XGBoost classification with rigorous hyperparameter tuning
 - **Production-Ready**: FastAPI backend + React frontend + Docker deployment
@@ -26,9 +27,13 @@ This is a complete end-to-end machine learning system for loan eligibility predi
 - **SHAP Analysis**:
   - Local interpretability (individual predictions)
   - Global feature importance
-  - Force plots and summary plots
   - Top-K contributing factors for each prediction
 - **Reasoning Reports**: Human-readable explanations for every decision
+
+### 🤖 Local AI (Offline SLM)
+- **Model**: Qwen2.5-0.5B-Instruct
+- **Feature**: Generates empathetic, natural language summaries for every loan decision
+- **Privacy**: Runs 100% locally with no internet connection required after setup
 
 ### ⚖️ Fairness & Bias
 - **Demographic Parity**: Equal selection rates across protected groups
@@ -141,33 +146,41 @@ docker-compose up --build
 # API Docs: http://localhost:8000/docs
 ```
 
-### Option 2: Local Development
+### Option 2: Local Development (Windows)
 
-#### Backend Setup
+#### 1. ML Model Training
+Before running the app, you must train the model to generate the necessary artifacts.
+```powershell
+# Navigate to project root
+cd "Bias-Free Loan Eligibility & Explainability System"
 
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/Scripts/activate  # On Windows
+# Activate your virtual environment
+.\backend\venv\Scripts\activate
 
 # Install dependencies
-cd backend
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 
-# Start API server
+# Run training (MUST be run from /ml directory for correct paths)
+cd ml
+python training_pipeline.py --data-path data/loan_data.csv --output-dir models
+cd ..
+```
+
+#### 2. Backend Setup (FastAPI)
+```powershell
+cd backend
+# Ensure venv is active
 uvicorn app.main:app --reload --port 8000
 ```
+*Note: On first run, the backend will download the 900MB Qwen model. Wait for "✓ Local LLM Ready".*
 
-#### Frontend Setup
-
-```bash
-# Install Node dependencies
+#### 3. Frontend Setup (React)
+```powershell
 cd frontend
 npm install
-
-# Start development server
 npm run dev
 ```
+*Access at: http://localhost:5173*
 
 ## 📚 Usage Guide
 
@@ -242,6 +255,7 @@ curl -X POST "http://localhost:8000/predict" \
     }
   ],
   "reasoning_summary": "Loan approved due to strong credit history and sufficient income",
+  "llm_explanation": "Based on our analysis, your loan application has been approved! Your excellent credit history and stable income were the primary reasons for this positive decision.",
   "timestamp": "2026-04-17T10:30:00"
 }
 ```
