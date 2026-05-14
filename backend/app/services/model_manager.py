@@ -1,5 +1,7 @@
-import joblib
+import torch  # Fix for WinError 1114 DLL load failed (OpenMP conflict)
 import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+import joblib
 import sys
 
 # Add project paths to avoid import issues
@@ -22,7 +24,8 @@ class ModelManager:
         """Load trained model and preprocessor artifacts"""
         try:
             # Build absolute paths to avoid CWD relative path issues
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            # We are in backend/app/services/model_manager.py, so we need to go up 4 levels to reach the root
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
             models_dir = os.path.join(base_dir, 'ml', 'models')
             
             model_path = os.path.join(models_dir, 'xgboost_model.joblib')

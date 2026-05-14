@@ -2,6 +2,7 @@
 FastAPI Backend for Loan Eligibility Prediction System
 Handles predictions, SHAP explanations, and detailed reasoning reports
 """
+import torch  # Fix for WinError 1114 DLL load failed (OpenMP conflict)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
