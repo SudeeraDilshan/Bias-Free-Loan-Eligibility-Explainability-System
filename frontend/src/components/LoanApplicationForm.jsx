@@ -80,7 +80,7 @@ const LoanApplicationForm = ({ onSubmit }) => {
                 <label>Education *</label>
                 <select name="Education" value={formData.Education} onChange={handleChange}>
                   <option value="Graduate">Graduate</option>
-                  <option value="Undergraduate">Undergraduate</option>
+                  <option value="Not Graduate">Undergraduate / Not Graduate</option>
                 </select>
               </div>
             </section>
