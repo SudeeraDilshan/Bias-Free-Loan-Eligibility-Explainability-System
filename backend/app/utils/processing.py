@@ -12,7 +12,7 @@ def preprocess_application(application: LoanApplicationInput) -> pd.DataFrame:
         'Loan_ID': application.Loan_ID,
         'Gender': application.Gender,
         'Married': application.Married,
-        'Dependents': str(application.Dependents),
+        'Dependents': '3+' if str(application.Dependents) == '3+' or (str(application.Dependents).isdigit() and int(application.Dependents) >= 3) else str(application.Dependents),
         'Education': application.Education,
         'Self_Employed': application.Self_Employed,
         'ApplicantIncome': application.ApplicantIncome,

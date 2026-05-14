@@ -6,7 +6,7 @@ class LoanApplicationInput(BaseModel):
     Loan_ID: str = Field(..., description="Unique loan application ID")
     Gender: str = Field(..., description="Gender: Male/Female")
     Married: str = Field(..., description="Marital status: Yes/No")
-    Dependents: int = Field(..., description="Number of dependents (0-3+)")
+    Dependents: Any = Field(..., description="Number of dependents (0-3+)")
     Education: str = Field(..., description="Education: Graduate/Undergraduate")
     Self_Employed: str = Field(..., description="Self employed: Yes/No")
     ApplicantIncome: float = Field(..., description="Monthly income in rupees", gt=0)
