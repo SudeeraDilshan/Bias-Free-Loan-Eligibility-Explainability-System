@@ -1,0 +1,501 @@
+Loan_ID,Loan_Type,Gender,Married,Dependents,Education,Self_Employed,Loan_Amount_Term,Loan_Status,ApplicantIncome_LKR,CoapplicantIncome_LKR,LoanAmount_LKR,Property_Region_SL,Employment_Sector,CRIB_Clearance
+LP0001,Vehicle Lease,Male,Yes,1,Graduate,Yes,48,N,184500,61940,1180000,Kandy,Informal/Self-Employed,Very Low Risk
+LP0002,Housing Loan,Female,Yes,2,Not Graduate,Yes,120,N,40520,92320,3980000,Hambantota,Informal/Self-Employed,Average Risk
+LP0003,Housing Loan,Male,Yes,0,Not Graduate,No,120,Y,94480,180,3690000,Colombo,Private Sector,Low Risk
+LP0004,Housing Loan,Male,No,0,Graduate,No,120,Y,238900,115040,4700000,Jaffna,Government,Low Risk
+LP0005,Personal Loan,Male,Yes,0,Graduate,Yes,24,Y,260720,197040,980000,Colombo,Informal/Self-Employed,Very Low Risk
+LP0006,Housing Loan,Female,Yes,0,Graduate,Yes,120,N,273140,125900,4540000,Colombo,Private Sector,High Risk
+LP0007,Personal Loan,Male,No,3+,Not Graduate,No,36,Y,67500,96300,1230000,Kandy,Private Sector,Very Low Risk
+LP0008,Housing Loan,Male,Yes,0,Not Graduate,Yes,60,N,65260,21440,2410000,Ratnapura,Private Sector,Very High Risk
+LP0009,Housing Loan,Male,No,3+,Not Graduate,Yes,120,Y,204240,64500,3100000,Kandy,Private Sector,Low Risk
+LP0010,Housing Loan,Female,No,3+,Not Graduate,Yes,120,Y,145940,26320,4050000,Jaffna,Informal/Self-Employed,Low Risk
+LP0011,Personal Loan,Male,Yes,0,Graduate,Yes,36,Y,214160,113980,1190000,Ampara,Informal/Self-Employed,Very Low Risk
+LP0012,Vehicle Lease,Male,No,0,Graduate,Yes,48,N,171980,136140,1390000,Galle,Informal/Self-Employed,Average Risk
+LP0013,Housing Loan,Male,Yes,1,Graduate,No,120,Y,132180,133480,3090000,Jaffna,Private Sector,Low Risk
+LP0014,Vehicle Lease,Male,No,2,Graduate,No,36,Y,162880,73660,1750000,Jaffna,Private Sector,Very Low Risk
+LP0015,Housing Loan,Female,No,0,Not Graduate,No,60,Y,32320,144540,2800000,Kandy,Private Sector,Very Low Risk
+LP0016,Housing Loan,Male,Yes,1,Not Graduate,No,120,Y,78660,65460,3440000,Puttalam,Private Sector,Very Low Risk
+LP0017,Housing Loan,Female,No,1,Graduate,Yes,120,N,139260,140000,4680000,Matara,Government,High Risk
+LP0018,Personal Loan,Female,No,2,Graduate,No,36,N,41660,2900,1780000,Gampaha,Private Sector,Low Risk
+LP0019,Housing Loan,Female,No,3+,Not Graduate,Yes,120,N,201720,100200,3290000,Matale,Private Sector,High Risk
+LP0020,Housing Loan,Male,No,0,Graduate,No,120,Y,297500,60800,3620000,Badulla,Private Sector,Very Low Risk
+LP0021,Personal Loan,Female,No,2,Not Graduate,Yes,36,N,105760,193080,1490000,Kurunegala,Private Sector,Low Risk
+LP0022,Housing Loan,Male,Yes,0,Graduate,Yes,120,Y,249200,195520,3750000,Mullaitivu,Private Sector,Very Low Risk
+LP0023,Housing Loan,Female,No,1,Graduate,No,120,N,113340,9640,3460000,Ampara,Government,Very Low Risk
+LP0024,Housing Loan,Female,Yes,1,Graduate,Yes,60,N,271040,63580,2310000,Colombo,Private Sector,Very Low Risk
+LP0025,Business/SME Loan,Female,No,3+,Graduate,Yes,60,Y,199300,24980,2230000,Galle,Government,Low Risk
+LP0026,Housing Loan,Female,Yes,1,Graduate,No,120,Y,234100,12600,3650000,Badulla,Private Sector,Low Risk
+LP0027,Housing Loan,Female,Yes,1,Graduate,Yes,120,N,282500,177060,4130000,Mullaitivu,Government,High Risk
+LP0028,Personal Loan,Female,No,2,Graduate,No,60,N,57780,57040,2370000,Mannar,Private Sector,Very High Risk
+LP0029,Personal Loan,Female,No,0,Not Graduate,No,48,N,265160,19740,1060000,Anuradhapura,Private Sector,Very High Risk
+LP0030,Personal Loan,Female,No,0,Not Graduate,No,12,Y,287880,152440,800000,Ratnapura,Private Sector,High Risk
+LP0031,Vehicle Lease,Male,Yes,2,Not Graduate,Yes,48,Y,197140,146540,1330000,Mullaitivu,Private Sector,Low Risk
+LP0032,Business/SME Loan,Male,No,3+,Not Graduate,Yes,60,Y,225180,194760,2010000,Trincomalee,Private Sector,Very Low Risk
+LP0033,Personal Loan,Female,Yes,0,Not Graduate,Yes,12,N,153080,176820,850000,Kegalle,Private Sector,Very Low Risk
+LP0034,Housing Loan,Female,Yes,1,Graduate,No,60,Y,138400,183200,2620000,Galle,Private Sector,Average Risk
+LP0035,Housing Loan,Female,Yes,0,Graduate,Yes,120,N,208400,22000,4630000,Colombo,Private Sector,Average Risk
+LP0036,Housing Loan,Male,No,1,Not Graduate,No,120,Y,70860,133040,4570000,Ratnapura,Private Sector,Low Risk
+LP0037,Housing Loan,Female,No,3+,Graduate,No,120,Y,113940,172640,4130000,Ampara,Private Sector,Very Low Risk
+LP0038,Business/SME Loan,Male,Yes,2,Not Graduate,Yes,36,Y,99920,148420,1550000,Ratnapura,Informal/Self-Employed,Very Low Risk
+LP0039,Housing Loan,Male,Yes,0,Not Graduate,No,120,Y,45560,100320,4630000,Kandy,Government,Low Risk
+LP0040,Housing Loan,Male,No,2,Graduate,Yes,120,N,34260,15380,3910000,Colombo,Private Sector,Very Low Risk
+LP0041,Business/SME Loan,Male,Yes,0,Graduate,Yes,60,Y,105240,26860,2690000,Batticaloa,Informal/Self-Employed,Very Low Risk
+LP0042,Housing Loan,Male,No,1,Graduate,Yes,120,Y,297980,87160,4400000,Nuwara Eliya,Private Sector,Low Risk
+LP0043,Business/SME Loan,Female,Yes,2,Not Graduate,Yes,60,Y,225360,195380,2120000,Gampaha,Private Sector,Very Low Risk
+LP0044,Housing Loan,Female,No,0,Graduate,Yes,120,N,242800,135600,4880000,Kegalle,Private Sector,Average Risk
+LP0045,Housing Loan,Female,Yes,1,Not Graduate,No,60,N,164620,132040,2690000,Colombo,Private Sector,High Risk
+LP0046,Housing Loan,Female,No,2,Not Graduate,No,120,Y,252560,46980,3190000,Kurunegala,Private Sector,Low Risk
+LP0047,Personal Loan,Female,Yes,2,Not Graduate,No,36,N,92340,113980,1690000,Batticaloa,Government,Very Low Risk
+LP0048,Housing Loan,Male,No,0,Graduate,Yes,120,N,145820,24820,4430000,Matara,Private Sector,Very High Risk
+LP0049,Housing Loan,Female,No,0,Graduate,Yes,120,Y,205660,22500,3850000,Gampaha,Private Sector,Low Risk
+LP0050,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,Y,297940,187640,4490000,Kegalle,Informal/Self-Employed,Very Low Risk
+LP0051,Vehicle Lease,Male,Yes,1,Graduate,No,60,Y,84400,135280,2310000,Galle,Private Sector,Average Risk
+LP0052,Business/SME Loan,Female,No,0,Graduate,Yes,48,Y,208100,102020,1550000,Kandy,Government,Low Risk
+LP0053,Housing Loan,Male,Yes,2,Graduate,No,60,Y,212540,156860,2660000,Nuwara Eliya,Private Sector,Average Risk
+LP0054,Housing Loan,Female,No,2,Not Graduate,No,60,Y,150940,1440,2540000,Jaffna,Private Sector,Average Risk
+LP0055,Personal Loan,Male,Yes,0,Not Graduate,Yes,36,N,280580,109440,1190000,Kandy,Government,Very High Risk
+LP0056,Personal Loan,Female,No,0,Graduate,Yes,24,Y,190640,103780,930000,Kandy,Private Sector,Average Risk
+LP0057,Housing Loan,Female,No,3+,Not Graduate,No,120,N,30020,49440,3780000,Anuradhapura,Private Sector,Very Low Risk
+LP0058,Housing Loan,Male,No,2,Graduate,Yes,120,Y,157360,14140,3500000,Galle,Private Sector,Very Low Risk
+LP0059,Housing Loan,Male,No,1,Graduate,No,60,Y,250800,36080,2770000,Polonnaruwa,Private Sector,Very Low Risk
+LP0060,Business/SME Loan,Male,No,3+,Graduate,Yes,60,Y,274720,134080,2330000,Matale,Private Sector,Very Low Risk
+LP0061,Business/SME Loan,Male,No,0,Graduate,Yes,48,Y,68980,74260,1560000,Hambantota,Government,Very Low Risk
+LP0062,Vehicle Lease,Male,Yes,0,Not Graduate,No,48,N,164640,101020,1330000,Kurunegala,Government,High Risk
+LP0063,Housing Loan,Male,Yes,2,Not Graduate,Yes,120,Y,186660,49500,3870000,Badulla,Informal/Self-Employed,Low Risk
+LP0064,Vehicle Lease,Male,Yes,0,Not Graduate,No,60,Y,48340,72200,2990000,Gampaha,Private Sector,Very Low Risk
+LP0065,Housing Loan,Male,No,1,Graduate,Yes,120,Y,93480,85100,4120000,Vavuniya,Private Sector,Very Low Risk
+LP0066,Housing Loan,Female,No,2,Graduate,Yes,120,N,238660,147940,4900000,Kegalle,Informal/Self-Employed,Low Risk
+LP0067,Personal Loan,Female,No,0,Graduate,No,12,Y,170280,34700,700000,Badulla,Private Sector,Very Low Risk
+LP0068,Business/SME Loan,Male,No,2,Not Graduate,Yes,60,Y,31780,195540,2450000,Kurunegala,Private Sector,Low Risk
+LP0069,Vehicle Lease,Female,Yes,0,Graduate,No,60,Y,64180,165160,2270000,Kurunegala,Private Sector,Very Low Risk
+LP0070,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,Y,237220,159580,4660000,Kegalle,Government,Average Risk
+LP0071,Personal Loan,Female,No,0,Not Graduate,Yes,12,N,278600,48560,560000,Matale,Government,Very High Risk
+LP0072,Business/SME Loan,Female,Yes,1,Not Graduate,Yes,36,Y,90820,148520,1190000,Trincomalee,Private Sector,Very Low Risk
+LP0073,Personal Loan,Male,Yes,1,Not Graduate,No,36,N,32100,170660,1760000,Mullaitivu,Private Sector,High Risk
+LP0074,Housing Loan,Female,No,2,Not Graduate,No,120,Y,211560,104980,4480000,Mannar,Government,Low Risk
+LP0075,Housing Loan,Male,Yes,0,Not Graduate,Yes,60,Y,202380,105820,2090000,Gampaha,Informal/Self-Employed,Low Risk
+LP0076,Business/SME Loan,Female,No,0,Graduate,Yes,60,Y,67900,56340,2970000,Matale,Private Sector,Low Risk
+LP0077,Housing Loan,Female,Yes,1,Graduate,No,60,Y,151800,188480,2520000,Matara,Government,Low Risk
+LP0078,Business/SME Loan,Female,No,0,Not Graduate,Yes,48,Y,200160,77480,1970000,Polonnaruwa,Informal/Self-Employed,Very Low Risk
+LP0079,Business/SME Loan,Male,No,1,Not Graduate,Yes,48,Y,151640,193720,1920000,Kandy,Informal/Self-Employed,Very Low Risk
+LP0080,Housing Loan,Female,No,0,Graduate,Yes,120,Y,42680,84220,4810000,Matara,Informal/Self-Employed,Very Low Risk
+LP0081,Business/SME Loan,Male,No,2,Not Graduate,Yes,60,Y,68500,13220,2480000,Matale,Government,Average Risk
+LP0082,Housing Loan,Female,Yes,0,Not Graduate,No,120,Y,71120,67480,4540000,Vavuniya,Private Sector,Low Risk
+LP0083,Housing Loan,Male,No,0,Graduate,Yes,120,Y,168340,184160,4750000,Mannar,Private Sector,High Risk
+LP0084,Vehicle Lease,Female,No,3+,Not Graduate,No,60,Y,92880,4140,2030000,Batticaloa,Private Sector,Very Low Risk
+LP0085,Housing Loan,Male,No,1,Not Graduate,Yes,120,Y,239240,53300,4250000,Kalutara,Informal/Self-Employed,Very Low Risk
+LP0086,Housing Loan,Male,Yes,0,Not Graduate,Yes,120,Y,222620,49860,4330000,Colombo,Private Sector,Very Low Risk
+LP0087,Vehicle Lease,Female,No,0,Graduate,No,48,N,41040,136260,1910000,Nuwara Eliya,Private Sector,Very High Risk
+LP0088,Housing Loan,Male,Yes,3+,Graduate,Yes,120,N,208140,12640,3620000,Batticaloa,Informal/Self-Employed,Very High Risk
+LP0089,Personal Loan,Female,No,3+,Graduate,No,60,Y,137660,61660,2140000,Matale,Private Sector,Average Risk
+LP0090,Housing Loan,Female,Yes,1,Not Graduate,Yes,120,Y,108220,74380,3630000,Kalutara,Private Sector,Low Risk
+LP0091,Personal Loan,Female,Yes,3+,Not Graduate,No,12,Y,228100,142460,700000,Mullaitivu,Government,Very Low Risk
+LP0092,Vehicle Lease,Female,No,2,Graduate,No,48,Y,97780,33580,1310000,Matale,Private Sector,Low Risk
+LP0093,Personal Loan,Female,Yes,3+,Not Graduate,Yes,36,Y,215980,4720,1180000,Jaffna,Informal/Self-Employed,Low Risk
+LP0094,Vehicle Lease,Female,No,2,Not Graduate,No,48,Y,277960,148920,1800000,Kandy,Government,Low Risk
+LP0095,Personal Loan,Female,No,1,Not Graduate,Yes,36,Y,198840,88860,1360000,Kandy,Private Sector,Low Risk
+LP0096,Business/SME Loan,Female,No,1,Not Graduate,Yes,60,Y,78600,135400,2670000,Ratnapura,Government,Low Risk
+LP0097,Housing Loan,Female,Yes,1,Not Graduate,No,120,N,234920,194640,4700000,Colombo,Private Sector,Very High Risk
+LP0098,Housing Loan,Female,Yes,1,Graduate,Yes,120,Y,39160,121980,3540000,Matale,Informal/Self-Employed,Very Low Risk
+LP0099,Housing Loan,Female,No,1,Not Graduate,Yes,120,Y,297900,171100,4520000,Monaragala,Informal/Self-Employed,Very Low Risk
+LP0100,Housing Loan,Male,No,2,Graduate,Yes,120,N,34140,47360,4200000,Ratnapura,Government,Very Low Risk
+LP0101,Housing Loan,Male,Yes,2,Not Graduate,Yes,120,N,47980,5700,3940000,Colombo,Informal/Self-Employed,High Risk
+LP0102,Housing Loan,Female,No,1,Graduate,Yes,120,Y,263060,2960,3900000,Kandy,Private Sector,Low Risk
+LP0103,Housing Loan,Female,No,3+,Not Graduate,Yes,120,Y,261540,80740,4330000,Ampara,Private Sector,High Risk
+LP0104,Housing Loan,Female,No,0,Graduate,No,120,N,30420,130980,4450000,Nuwara Eliya,Private Sector,Very High Risk
+LP0105,Housing Loan,Female,Yes,1,Not Graduate,No,120,Y,202020,142420,4940000,Gampaha,Private Sector,Average Risk
+LP0106,Housing Loan,Female,Yes,3+,Graduate,No,120,Y,47880,199160,4740000,Batticaloa,Private Sector,Very Low Risk
+LP0107,Business/SME Loan,Female,Yes,0,Not Graduate,Yes,60,N,40280,97900,2100000,Galle,Private Sector,High Risk
+LP0108,Housing Loan,Female,No,1,Graduate,Yes,60,Y,175880,105600,2270000,Trincomalee,Government,Low Risk
+LP0109,Housing Loan,Female,No,1,Not Graduate,Yes,36,N,128080,20240,1660000,Mannar,Private Sector,High Risk
+LP0110,Personal Loan,Male,No,2,Graduate,No,60,N,187340,194300,2450000,Jaffna,Private Sector,High Risk
+LP0111,Housing Loan,Female,Yes,0,Graduate,No,120,N,293220,55700,4320000,Mullaitivu,Private Sector,Very Low Risk
+LP0112,Housing Loan,Male,No,0,Not Graduate,Yes,120,Y,112180,74500,3760000,Gampaha,Private Sector,Very Low Risk
+LP0113,Personal Loan,Female,No,3+,Not Graduate,No,48,N,295160,91520,1350000,Anuradhapura,Private Sector,Average Risk
+LP0114,Housing Loan,Female,No,2,Graduate,Yes,120,Y,173580,115640,3380000,Nuwara Eliya,Private Sector,Low Risk
+LP0115,Personal Loan,Male,No,2,Not Graduate,Yes,48,Y,236520,125140,1300000,Nuwara Eliya,Private Sector,Low Risk
+LP0116,Personal Loan,Female,Yes,2,Graduate,No,60,Y,265740,195860,2010000,Jaffna,Private Sector,Average Risk
+LP0117,Vehicle Lease,Male,Yes,2,Graduate,Yes,48,Y,252960,48160,1100000,Colombo,Private Sector,Low Risk
+LP0118,Vehicle Lease,Female,No,0,Graduate,No,48,N,61200,6800,1100000,Kandy,Private Sector,High Risk
+LP0119,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,N,55320,56340,4030000,Galle,Government,Very High Risk
+LP0120,Personal Loan,Male,Yes,1,Graduate,No,12,Y,237220,49920,770000,Galle,Private Sector,Low Risk
+LP0121,Housing Loan,Female,No,1,Graduate,No,120,Y,102760,119240,4910000,Gampaha,Private Sector,Low Risk
+LP0122,Personal Loan,Male,No,2,Not Graduate,No,24,N,208820,105980,920000,Kilinochchi,Government,Average Risk
+LP0123,Business/SME Loan,Female,Yes,2,Not Graduate,Yes,60,Y,98540,198340,2180000,Kandy,Private Sector,High Risk
+LP0124,Housing Loan,Male,No,2,Not Graduate,Yes,120,Y,125600,151480,4720000,Colombo,Private Sector,Very Low Risk
+LP0125,Vehicle Lease,Male,Yes,1,Not Graduate,No,48,Y,68540,33780,1350000,Monaragala,Private Sector,Very Low Risk
+LP0126,Business/SME Loan,Female,No,3+,Graduate,Yes,60,Y,269920,65340,2260000,Colombo,Informal/Self-Employed,Very Low Risk
+LP0127,Personal Loan,Female,Yes,3+,Graduate,Yes,24,Y,267880,88120,660000,Ratnapura,Private Sector,Low Risk
+LP0128,Vehicle Lease,Male,No,1,Graduate,Yes,36,N,77120,169060,1470000,Colombo,Private Sector,Very High Risk
+LP0129,Housing Loan,Female,Yes,1,Graduate,Yes,60,Y,125800,28840,2470000,Colombo,Government,Very Low Risk
+LP0130,Vehicle Lease,Female,Yes,1,Not Graduate,Yes,36,Y,240540,171940,1470000,Nuwara Eliya,Informal/Self-Employed,Low Risk
+LP0131,Vehicle Lease,Female,Yes,1,Graduate,Yes,48,Y,36120,88740,1140000,Nuwara Eliya,Informal/Self-Employed,Very Low Risk
+LP0132,Housing Loan,Male,No,1,Graduate,Yes,120,Y,189580,108700,3790000,Batticaloa,Private Sector,High Risk
+LP0133,Housing Loan,Male,Yes,1,Not Graduate,No,120,Y,103300,168700,3900000,Ratnapura,Private Sector,Very Low Risk
+LP0134,Personal Loan,Male,Yes,2,Graduate,Yes,12,Y,233620,82140,540000,Kandy,Government,Very Low Risk
+LP0135,Personal Loan,Male,No,2,Graduate,Yes,24,Y,171140,11200,510000,Nuwara Eliya,Government,Average Risk
+LP0136,Personal Loan,Male,No,2,Graduate,Yes,12,N,43220,175700,710000,Kalutara,Government,High Risk
+LP0137,Personal Loan,Male,Yes,2,Graduate,No,36,Y,122880,110960,1610000,Hambantota,Private Sector,Low Risk
+LP0138,Vehicle Lease,Male,Yes,1,Graduate,Yes,36,Y,200060,36520,1060000,Kegalle,Informal/Self-Employed,Low Risk
+LP0139,Personal Loan,Male,No,3+,Graduate,No,36,Y,88400,152580,1150000,Matara,Private Sector,Very Low Risk
+LP0140,Housing Loan,Male,No,0,Not Graduate,No,120,Y,215480,166500,3790000,Trincomalee,Private Sector,Average Risk
+LP0141,Vehicle Lease,Female,No,1,Not Graduate,No,48,Y,253260,62760,1470000,Trincomalee,Private Sector,Average Risk
+LP0142,Housing Loan,Male,No,0,Graduate,Yes,48,N,208920,153860,1930000,Colombo,Informal/Self-Employed,High Risk
+LP0143,Housing Loan,Female,No,3+,Graduate,Yes,120,Y,276440,165280,4170000,Kilinochchi,Informal/Self-Employed,Low Risk
+LP0144,Housing Loan,Female,Yes,2,Not Graduate,Yes,120,Y,284640,156840,4840000,Colombo,Government,Very Low Risk
+LP0145,Housing Loan,Female,No,3+,Graduate,Yes,48,Y,154720,134420,1740000,Hambantota,Private Sector,Very Low Risk
+LP0146,Vehicle Lease,Male,Yes,1,Graduate,No,60,Y,151560,140040,2160000,Trincomalee,Government,Very Low Risk
+LP0147,Vehicle Lease,Male,Yes,2,Graduate,Yes,36,Y,37040,84500,1350000,Kandy,Private Sector,Low Risk
+LP0148,Personal Loan,Male,Yes,1,Not Graduate,Yes,48,N,211880,59560,1250000,Monaragala,Government,Very High Risk
+LP0149,Housing Loan,Male,No,2,Graduate,No,120,Y,271600,147460,3930000,Gampaha,Private Sector,Very Low Risk
+LP0150,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,Y,170100,118140,4730000,Mullaitivu,Private Sector,Very Low Risk
+LP0151,Housing Loan,Male,Yes,0,Graduate,Yes,120,Y,33160,121940,3430000,Kurunegala,Government,Average Risk
+LP0152,Housing Loan,Male,No,0,Not Graduate,Yes,120,Y,233380,113120,4930000,Vavuniya,Private Sector,Very Low Risk
+LP0153,Personal Loan,Male,Yes,3+,Not Graduate,Yes,48,Y,49120,179680,1080000,Colombo,Private Sector,Very Low Risk
+LP0154,Housing Loan,Male,Yes,1,Graduate,Yes,48,Y,71420,85180,1870000,Mannar,Private Sector,Low Risk
+LP0155,Personal Loan,Male,No,3+,Not Graduate,No,36,N,201900,165720,1480000,Colombo,Private Sector,Average Risk
+LP0156,Vehicle Lease,Female,Yes,0,Graduate,No,60,Y,286060,118020,2410000,Gampaha,Government,Very Low Risk
+LP0157,Housing Loan,Male,Yes,1,Not Graduate,No,60,Y,249420,186500,2920000,Kegalle,Private Sector,Low Risk
+LP0158,Housing Loan,Female,Yes,0,Graduate,Yes,120,N,221580,98340,3680000,Nuwara Eliya,Private Sector,Very High Risk
+LP0159,Personal Loan,Male,No,3+,Graduate,No,12,N,99060,168580,980000,Galle,Private Sector,Very Low Risk
+LP0160,Housing Loan,Female,No,3+,Not Graduate,Yes,120,Y,163500,50600,4970000,Mannar,Private Sector,Low Risk
+LP0161,Personal Loan,Male,No,3+,Graduate,Yes,12,Y,49100,39200,810000,Kandy,Government,Very Low Risk
+LP0162,Housing Loan,Male,Yes,0,Graduate,Yes,120,N,155900,140900,4400000,Gampaha,Government,Low Risk
+LP0163,Housing Loan,Female,Yes,1,Not Graduate,Yes,120,Y,64240,20960,3260000,Anuradhapura,Informal/Self-Employed,Low Risk
+LP0164,Personal Loan,Female,No,1,Graduate,No,24,Y,124060,115440,690000,Anuradhapura,Private Sector,Low Risk
+LP0165,Vehicle Lease,Female,Yes,0,Graduate,No,60,Y,161260,50580,2030000,Mannar,Private Sector,Very Low Risk
+LP0166,Housing Loan,Male,Yes,1,Not Graduate,Yes,120,N,219300,59280,4320000,Kilinochchi,Informal/Self-Employed,Very High Risk
+LP0167,Personal Loan,Female,No,0,Not Graduate,No,48,N,142620,142740,1170000,Gampaha,Government,Very Low Risk
+LP0168,Housing Loan,Male,No,1,Graduate,Yes,120,Y,270060,19260,4150000,Colombo,Informal/Self-Employed,Very Low Risk
+LP0169,Housing Loan,Male,Yes,2,Graduate,No,120,N,246340,10720,4210000,Kegalle,Private Sector,Very Low Risk
+LP0170,Vehicle Lease,Female,Yes,2,Not Graduate,No,60,Y,241480,146800,2630000,Colombo,Government,Low Risk
+LP0171,Business/SME Loan,Female,Yes,3+,Not Graduate,Yes,48,Y,222660,143580,1920000,Mannar,Private Sector,Low Risk
+LP0172,Housing Loan,Male,No,2,Graduate,No,120,N,253420,159340,4250000,Ratnapura,Private Sector,High Risk
+LP0173,Business/SME Loan,Male,No,2,Not Graduate,Yes,60,N,229780,174680,2810000,Trincomalee,Private Sector,Very High Risk
+LP0174,Business/SME Loan,Female,No,2,Graduate,Yes,60,Y,281640,16900,2620000,Gampaha,Informal/Self-Employed,Very Low Risk
+LP0175,Vehicle Lease,Female,No,0,Graduate,Yes,36,N,274020,115540,1280000,Jaffna,Private Sector,Very High Risk
+LP0176,Housing Loan,Female,Yes,2,Graduate,Yes,60,Y,290840,60720,2630000,Kilinochchi,Private Sector,Very Low Risk
+LP0177,Personal Loan,Male,No,2,Graduate,No,36,Y,57880,118940,1650000,Batticaloa,Private Sector,Low Risk
+LP0178,Personal Loan,Male,No,3+,Graduate,No,48,Y,279460,49880,1410000,Matara,Private Sector,Very Low Risk
+LP0179,Housing Loan,Male,No,2,Not Graduate,Yes,120,N,219220,54380,3190000,Colombo,Private Sector,Average Risk
+LP0180,Housing Loan,Male,No,2,Not Graduate,No,120,N,124640,37680,4600000,Monaragala,Government,Very Low Risk
+LP0181,Housing Loan,Male,No,1,Not Graduate,No,120,Y,104280,86980,4300000,Jaffna,Government,Very Low Risk
+LP0182,Business/SME Loan,Male,Yes,3+,Not Graduate,Yes,60,N,40580,103580,2170000,Badulla,Government,High Risk
+LP0183,Vehicle Lease,Female,Yes,3+,Graduate,Yes,36,Y,266300,132200,1070000,Matale,Government,Average Risk
+LP0184,Housing Loan,Male,No,3+,Graduate,No,120,Y,89160,128600,3330000,Batticaloa,Government,Average Risk
+LP0185,Personal Loan,Male,Yes,3+,Graduate,Yes,12,N,188080,143080,750000,Kegalle,Private Sector,Very Low Risk
+LP0186,Housing Loan,Male,No,3+,Graduate,Yes,120,N,252120,129760,4180000,Kalutara,Private Sector,Low Risk
+LP0187,Housing Loan,Female,No,3+,Not Graduate,Yes,120,Y,291620,94740,4960000,Anuradhapura,Private Sector,Low Risk
+LP0188,Personal Loan,Male,Yes,0,Graduate,Yes,36,Y,101820,130500,1150000,Vavuniya,Informal/Self-Employed,Low Risk
+LP0189,Housing Loan,Male,Yes,2,Graduate,No,120,Y,236780,77000,4580000,Hambantota,Private Sector,Low Risk
+LP0190,Housing Loan,Female,No,3+,Not Graduate,Yes,60,N,167900,13780,2970000,Mullaitivu,Private Sector,High Risk
+LP0191,Housing Loan,Male,No,2,Not Graduate,No,120,Y,285300,103500,3030000,Gampaha,Private Sector,Very Low Risk
+LP0192,Housing Loan,Male,No,2,Not Graduate,Yes,120,Y,261220,172960,4360000,Nuwara Eliya,Private Sector,Average Risk
+LP0193,Personal Loan,Male,Yes,0,Not Graduate,No,12,Y,212620,101560,930000,Polonnaruwa,Government,Average Risk
+LP0194,Personal Loan,Male,No,3+,Graduate,Yes,48,N,40500,108960,1460000,Ratnapura,Government,Low Risk
+LP0195,Personal Loan,Male,No,1,Graduate,Yes,12,Y,159540,23580,910000,Kalutara,Private Sector,Very Low Risk
+LP0196,Vehicle Lease,Female,No,0,Not Graduate,No,60,Y,30020,181480,2760000,Colombo,Private Sector,Very Low Risk
+LP0197,Housing Loan,Female,Yes,1,Graduate,Yes,120,Y,37480,128120,3110000,Anuradhapura,Government,Low Risk
+LP0198,Business/SME Loan,Female,No,2,Graduate,Yes,60,Y,240640,171820,2160000,Matale,Informal/Self-Employed,Average Risk
+LP0199,Housing Loan,Male,No,2,Graduate,No,120,Y,273940,138140,4850000,Kalutara,Private Sector,Average Risk
+LP0200,Housing Loan,Male,Yes,0,Not Graduate,Yes,120,Y,254880,176000,3280000,Kilinochchi,Government,Low Risk
+LP0201,Personal Loan,Male,No,0,Graduate,Yes,36,Y,122960,32760,1380000,Kalutara,Private Sector,Low Risk
+LP0202,Housing Loan,Female,No,1,Not Graduate,No,120,Y,77300,113420,4280000,Kurunegala,Government,Very Low Risk
+LP0203,Business/SME Loan,Male,Yes,3+,Graduate,Yes,60,Y,60500,138560,2270000,Gampaha,Private Sector,Very Low Risk
+LP0204,Housing Loan,Male,No,1,Graduate,Yes,120,Y,283360,27640,4760000,Galle,Private Sector,Average Risk
+LP0205,Housing Loan,Female,Yes,0,Graduate,Yes,120,Y,62920,28060,4520000,Gampaha,Private Sector,Low Risk
+LP0206,Business/SME Loan,Male,Yes,1,Not Graduate,Yes,60,Y,30260,180220,2460000,Nuwara Eliya,Private Sector,High Risk
+LP0207,Housing Loan,Female,No,0,Graduate,Yes,120,Y,121980,65840,3560000,Ampara,Private Sector,Very Low Risk
+LP0208,Housing Loan,Female,No,1,Not Graduate,Yes,120,Y,75560,180220,3160000,Galle,Informal/Self-Employed,Low Risk
+LP0209,Housing Loan,Female,No,0,Not Graduate,No,120,N,93100,8380,3170000,Anuradhapura,Government,High Risk
+LP0210,Vehicle Lease,Male,No,0,Not Graduate,Yes,36,Y,196420,90340,1230000,Colombo,Private Sector,Very Low Risk
+LP0211,Personal Loan,Male,Yes,0,Graduate,Yes,12,Y,106280,66040,570000,Kandy,Private Sector,Low Risk
+LP0212,Housing Loan,Male,No,3+,Graduate,Yes,120,Y,292500,157140,4570000,Kurunegala,Private Sector,Low Risk
+LP0213,Housing Loan,Male,Yes,1,Graduate,No,120,Y,94320,194000,3460000,Colombo,Private Sector,Low Risk
+LP0214,Business/SME Loan,Male,No,1,Graduate,Yes,60,N,252600,157400,2130000,Galle,Private Sector,High Risk
+LP0215,Personal Loan,Male,No,1,Not Graduate,No,48,Y,272400,113860,1340000,Badulla,Private Sector,Low Risk
+LP0216,Vehicle Lease,Male,No,0,Not Graduate,No,48,N,234640,15340,1210000,Trincomalee,Private Sector,High Risk
+LP0217,Personal Loan,Female,Yes,1,Not Graduate,Yes,36,Y,194380,40880,1040000,Galle,Informal/Self-Employed,Very Low Risk
+LP0218,Housing Loan,Male,No,1,Graduate,Yes,120,Y,72260,30980,4420000,Nuwara Eliya,Private Sector,Low Risk
+LP0219,Personal Loan,Female,No,0,Not Graduate,Yes,12,Y,218880,199120,960000,Kandy,Informal/Self-Employed,Low Risk
+LP0220,Housing Loan,Male,No,2,Graduate,Yes,120,Y,117120,122800,4480000,Jaffna,Private Sector,Low Risk
+LP0221,Housing Loan,Male,No,0,Not Graduate,No,120,Y,234760,74320,4810000,Kilinochchi,Private Sector,Low Risk
+LP0222,Housing Loan,Male,Yes,1,Graduate,Yes,60,N,140860,89620,2870000,Anuradhapura,Private Sector,Very High Risk
+LP0223,Vehicle Lease,Female,No,0,Graduate,No,36,Y,121100,157960,1530000,Badulla,Government,Very Low Risk
+LP0224,Business/SME Loan,Female,Yes,2,Not Graduate,Yes,60,Y,274300,130960,2590000,Jaffna,Private Sector,Very Low Risk
+LP0225,Personal Loan,Female,Yes,0,Not Graduate,No,12,Y,281760,45860,910000,Matara,Private Sector,Very Low Risk
+LP0226,Housing Loan,Female,Yes,1,Not Graduate,Yes,120,N,171240,96740,3650000,Hambantota,Private Sector,Very Low Risk
+LP0227,Housing Loan,Male,Yes,2,Not Graduate,Yes,120,Y,97480,155160,3170000,Gampaha,Informal/Self-Employed,Average Risk
+LP0228,Housing Loan,Female,Yes,3+,Graduate,Yes,120,N,158600,135860,4350000,Puttalam,Private Sector,Very Low Risk
+LP0229,Housing Loan,Male,Yes,1,Not Graduate,Yes,120,N,99320,152760,3120000,Badulla,Private Sector,Average Risk
+LP0230,Housing Loan,Male,No,2,Not Graduate,No,120,Y,91620,159860,3850000,Kalutara,Private Sector,Low Risk
+LP0231,Housing Loan,Female,Yes,2,Not Graduate,No,120,Y,269400,120140,4360000,Mannar,Private Sector,Low Risk
+LP0232,Housing Loan,Female,Yes,3+,Graduate,Yes,120,N,42580,110840,4140000,Badulla,Private Sector,Very High Risk
+LP0233,Housing Loan,Female,Yes,0,Graduate,No,120,N,35380,181840,3080000,Monaragala,Private Sector,Very High Risk
+LP0234,Housing Loan,Female,No,0,Not Graduate,Yes,120,Y,246620,127120,3320000,Kegalle,Private Sector,Low Risk
+LP0235,Housing Loan,Female,No,1,Graduate,Yes,36,Y,233700,168660,1630000,Galle,Government,Very Low Risk
+LP0236,Housing Loan,Female,Yes,3+,Not Graduate,No,120,Y,144480,147600,4120000,Kandy,Government,Very High Risk
+LP0237,Personal Loan,Female,No,0,Graduate,Yes,12,Y,147940,47700,890000,Kegalle,Private Sector,Very Low Risk
+LP0238,Housing Loan,Female,Yes,3+,Graduate,Yes,120,N,251660,85360,4660000,Monaragala,Private Sector,High Risk
+LP0239,Housing Loan,Male,Yes,0,Graduate,No,60,Y,292980,13420,2690000,Gampaha,Government,Low Risk
+LP0240,Business/SME Loan,Female,No,2,Graduate,Yes,48,N,98640,3260,1780000,Monaragala,Private Sector,Very Low Risk
+LP0241,Personal Loan,Female,Yes,0,Not Graduate,Yes,12,N,219440,173120,570000,Ratnapura,Private Sector,Average Risk
+LP0242,Vehicle Lease,Male,No,3+,Not Graduate,Yes,48,N,155520,91840,1500000,Hambantota,Private Sector,Average Risk
+LP0243,Housing Loan,Female,No,2,Not Graduate,Yes,120,Y,147900,95900,4650000,Galle,Private Sector,Average Risk
+LP0244,Housing Loan,Male,Yes,2,Graduate,No,120,Y,172300,95960,4290000,Trincomalee,Private Sector,Very Low Risk
+LP0245,Vehicle Lease,Male,Yes,2,Not Graduate,No,60,Y,163120,120720,2250000,Hambantota,Private Sector,Very Low Risk
+LP0246,Personal Loan,Female,No,3+,Not Graduate,No,48,Y,241040,47100,1560000,Batticaloa,Private Sector,Average Risk
+LP0247,Personal Loan,Male,Yes,1,Not Graduate,Yes,36,Y,41500,117740,1500000,Kalutara,Government,Very Low Risk
+LP0248,Housing Loan,Male,Yes,1,Graduate,Yes,120,Y,170580,159220,3090000,Jaffna,Private Sector,Average Risk
+LP0249,Housing Loan,Male,Yes,1,Graduate,No,120,N,151980,116540,4150000,Galle,Private Sector,Average Risk
+LP0250,Business/SME Loan,Male,No,3+,Graduate,Yes,60,N,219980,174740,2950000,Kandy,Informal/Self-Employed,Average Risk
+LP0251,Housing Loan,Female,No,2,Not Graduate,Yes,120,Y,93840,94380,3240000,Kurunegala,Private Sector,Very Low Risk
+LP0252,Personal Loan,Male,Yes,1,Not Graduate,Yes,24,N,93560,11860,810000,Jaffna,Informal/Self-Employed,Very Low Risk
+LP0253,Housing Loan,Female,No,3+,Not Graduate,Yes,48,Y,151040,96780,1860000,Colombo,Private Sector,Average Risk
+LP0254,Personal Loan,Male,No,1,Graduate,No,24,Y,84680,147880,610000,Kandy,Government,Very Low Risk
+LP0255,Housing Loan,Male,No,0,Graduate,No,120,Y,152320,193020,4440000,Galle,Private Sector,Very Low Risk
+LP0256,Housing Loan,Male,No,1,Not Graduate,No,120,Y,238080,69860,3510000,Colombo,Private Sector,Low Risk
+LP0257,Housing Loan,Male,No,1,Graduate,Yes,120,N,240880,123280,4240000,Batticaloa,Private Sector,Average Risk
+LP0258,Personal Loan,Female,Yes,2,Graduate,No,24,N,101360,53440,650000,Gampaha,Government,Very High Risk
+LP0259,Personal Loan,Female,Yes,3+,Graduate,No,48,Y,226940,84000,1780000,Nuwara Eliya,Private Sector,Low Risk
+LP0260,Vehicle Lease,Male,Yes,2,Graduate,Yes,48,N,225420,320,1120000,Vavuniya,Private Sector,High Risk
+LP0261,Housing Loan,Male,No,2,Not Graduate,Yes,36,N,74060,63820,1580000,Monaragala,Private Sector,Low Risk
+LP0262,Housing Loan,Female,No,2,Graduate,Yes,120,N,57800,7840,4240000,Kandy,Informal/Self-Employed,Average Risk
+LP0263,Personal Loan,Male,Yes,2,Graduate,No,24,Y,64840,172320,700000,Mullaitivu,Government,Very Low Risk
+LP0264,Personal Loan,Male,No,2,Graduate,No,60,Y,68500,125440,2070000,Vavuniya,Private Sector,Low Risk
+LP0265,Housing Loan,Male,Yes,1,Graduate,No,120,N,42380,11420,3180000,Mannar,Private Sector,Average Risk
+LP0266,Housing Loan,Female,Yes,2,Not Graduate,Yes,60,Y,55480,72620,2110000,Galle,Government,Very High Risk
+LP0267,Housing Loan,Female,Yes,2,Not Graduate,No,120,Y,49120,123440,3090000,Galle,Private Sector,Low Risk
+LP0268,Housing Loan,Female,No,3+,Graduate,No,120,N,68780,186240,4610000,Anuradhapura,Private Sector,Very High Risk
+LP0269,Housing Loan,Male,No,0,Graduate,Yes,48,Y,109060,143540,1510000,Kurunegala,Private Sector,Very Low Risk
+LP0270,Housing Loan,Male,Yes,1,Graduate,No,60,N,241460,168660,2720000,Anuradhapura,Government,Very Low Risk
+LP0271,Vehicle Lease,Female,Yes,1,Graduate,Yes,48,N,49360,77940,1080000,Galle,Private Sector,Very High Risk
+LP0272,Business/SME Loan,Female,Yes,1,Graduate,Yes,60,N,220160,162460,2960000,Gampaha,Government,Low Risk
+LP0273,Business/SME Loan,Female,Yes,2,Graduate,Yes,36,Y,214700,45580,1770000,Galle,Informal/Self-Employed,Average Risk
+LP0274,Housing Loan,Female,No,2,Not Graduate,No,120,Y,35620,179600,3320000,Ampara,Government,Average Risk
+LP0275,Housing Loan,Male,No,2,Graduate,No,120,N,250720,149020,3740000,Matara,Private Sector,Low Risk
+LP0276,Personal Loan,Female,Yes,3+,Not Graduate,Yes,24,Y,155240,178120,740000,Galle,Informal/Self-Employed,Low Risk
+LP0277,Personal Loan,Male,Yes,0,Not Graduate,No,36,N,51160,15500,1800000,Kandy,Private Sector,Low Risk
+LP0278,Housing Loan,Female,No,2,Graduate,Yes,120,Y,115860,137380,4020000,Trincomalee,Informal/Self-Employed,Low Risk
+LP0279,Housing Loan,Male,No,0,Not Graduate,Yes,60,N,244480,44940,2450000,Batticaloa,Government,Very High Risk
+LP0280,Housing Loan,Female,Yes,3+,Not Graduate,Yes,120,Y,270400,141760,3300000,Mannar,Private Sector,Low Risk
+LP0281,Housing Loan,Female,Yes,1,Not Graduate,No,120,N,133560,1560,4530000,Kandy,Private Sector,Average Risk
+LP0282,Housing Loan,Female,Yes,2,Not Graduate,Yes,120,Y,169600,161600,4670000,Ratnapura,Private Sector,Very Low Risk
+LP0283,Vehicle Lease,Female,No,0,Not Graduate,No,60,N,299440,141980,2030000,Ratnapura,Government,High Risk
+LP0284,Housing Loan,Male,No,0,Not Graduate,No,120,Y,214000,78520,4310000,Galle,Government,Very Low Risk
+LP0285,Personal Loan,Female,No,2,Graduate,No,48,Y,54580,180940,1820000,Jaffna,Government,Low Risk
+LP0286,Housing Loan,Male,Yes,1,Not Graduate,No,60,N,214540,146800,2760000,Badulla,Private Sector,Very Low Risk
+LP0287,Business/SME Loan,Male,Yes,1,Not Graduate,Yes,60,Y,121700,141660,2380000,Matale,Private Sector,Low Risk
+LP0288,Housing Loan,Male,No,1,Not Graduate,Yes,120,N,199340,124600,3140000,Colombo,Private Sector,Very High Risk
+LP0289,Housing Loan,Male,No,3+,Graduate,Yes,120,Y,84800,184460,4210000,Galle,Government,Very Low Risk
+LP0290,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,Y,75780,98800,4830000,Galle,Informal/Self-Employed,Low Risk
+LP0291,Vehicle Lease,Male,No,0,Graduate,No,36,Y,54780,65420,1830000,Kandy,Private Sector,Very Low Risk
+LP0292,Housing Loan,Male,No,0,Not Graduate,No,60,Y,137400,69120,2600000,Colombo,Private Sector,Very Low Risk
+LP0293,Business/SME Loan,Male,Yes,3+,Graduate,Yes,36,N,32500,155760,1090000,Jaffna,Government,Very High Risk
+LP0294,Housing Loan,Female,No,0,Graduate,No,120,N,275140,171980,4770000,Hambantota,Private Sector,High Risk
+LP0295,Housing Loan,Female,Yes,3+,Not Graduate,No,120,Y,280080,153000,4260000,Gampaha,Government,Very Low Risk
+LP0296,Housing Loan,Female,Yes,1,Not Graduate,No,120,N,179460,54220,4440000,Matale,Private Sector,Very High Risk
+LP0297,Housing Loan,Female,Yes,2,Graduate,Yes,120,N,271200,33360,4990000,Hambantota,Private Sector,Low Risk
+LP0298,Housing Loan,Male,Yes,0,Not Graduate,Yes,120,Y,218000,2940,4800000,Ratnapura,Government,Very Low Risk
+LP0299,Housing Loan,Male,Yes,0,Graduate,Yes,120,Y,136840,128400,4130000,Galle,Private Sector,Low Risk
+LP0300,Housing Loan,Female,Yes,1,Graduate,No,120,Y,177020,7300,4130000,Batticaloa,Government,Very Low Risk
+LP0301,Business/SME Loan,Male,Yes,2,Graduate,Yes,60,Y,162760,197320,2620000,Kandy,Private Sector,Very Low Risk
+LP0302,Business/SME Loan,Male,No,3+,Graduate,Yes,60,N,161400,90620,2650000,Batticaloa,Private Sector,Very High Risk
+LP0303,Housing Loan,Male,Yes,2,Graduate,Yes,60,Y,94980,106600,2750000,Polonnaruwa,Private Sector,Low Risk
+LP0304,Business/SME Loan,Female,Yes,1,Not Graduate,Yes,48,N,212200,110200,1800000,Galle,Private Sector,Very High Risk
+LP0305,Business/SME Loan,Female,No,1,Graduate,Yes,48,N,181900,175080,1250000,Polonnaruwa,Private Sector,Low Risk
+LP0306,Housing Loan,Male,No,2,Graduate,Yes,120,N,272300,179280,3350000,Polonnaruwa,Private Sector,Average Risk
+LP0307,Housing Loan,Female,No,3+,Not Graduate,No,120,Y,155880,129860,3260000,Badulla,Private Sector,Low Risk
+LP0308,Personal Loan,Female,Yes,3+,Graduate,No,60,Y,160540,108780,2050000,Kandy,Private Sector,Very Low Risk
+LP0309,Business/SME Loan,Female,No,0,Not Graduate,Yes,60,N,145140,195300,2970000,Mannar,Private Sector,Low Risk
+LP0310,Business/SME Loan,Female,Yes,3+,Not Graduate,Yes,60,N,281900,130220,2670000,Kegalle,Private Sector,High Risk
+LP0311,Vehicle Lease,Female,Yes,2,Not Graduate,No,60,Y,69380,150080,2390000,Colombo,Private Sector,Very Low Risk
+LP0312,Housing Loan,Male,Yes,1,Graduate,No,120,Y,249700,24920,4660000,Galle,Private Sector,High Risk
+LP0313,Business/SME Loan,Female,Yes,0,Graduate,Yes,60,Y,47820,76780,2120000,Anuradhapura,Informal/Self-Employed,Very Low Risk
+LP0314,Business/SME Loan,Male,No,0,Graduate,Yes,60,N,119400,171020,2290000,Gampaha,Private Sector,Average Risk
+LP0315,Personal Loan,Male,No,1,Not Graduate,Yes,12,N,173500,47520,830000,Ampara,Government,Very High Risk
+LP0316,Personal Loan,Female,Yes,3+,Graduate,Yes,24,Y,234500,60180,900000,Galle,Private Sector,Low Risk
+LP0317,Housing Loan,Male,Yes,1,Not Graduate,No,120,Y,221120,183080,3560000,Kegalle,Private Sector,Very Low Risk
+LP0318,Housing Loan,Male,Yes,3+,Graduate,Yes,120,Y,196400,36540,4800000,Matale,Informal/Self-Employed,Very Low Risk
+LP0319,Housing Loan,Male,No,1,Not Graduate,Yes,120,N,214120,139580,3870000,Matale,Government,High Risk
+LP0320,Housing Loan,Female,Yes,2,Graduate,Yes,120,Y,229820,196100,3630000,Kandy,Government,Very Low Risk
+LP0321,Personal Loan,Female,Yes,3+,Graduate,Yes,36,Y,166240,196640,1240000,Kandy,Private Sector,Very High Risk
+LP0322,Housing Loan,Male,No,2,Graduate,No,120,N,180380,171380,4900000,Anuradhapura,Private Sector,Low Risk
+LP0323,Housing Loan,Female,No,0,Not Graduate,Yes,120,N,122240,85700,3280000,Galle,Informal/Self-Employed,Very High Risk
+LP0324,Personal Loan,Female,Yes,1,Not Graduate,No,60,N,224200,138200,2250000,Kalutara,Government,High Risk
+LP0325,Housing Loan,Female,No,0,Graduate,Yes,120,Y,277460,171220,4330000,Galle,Private Sector,Average Risk
+LP0326,Business/SME Loan,Female,No,0,Graduate,Yes,36,Y,53960,43920,1990000,Ratnapura,Government,Low Risk
+LP0327,Housing Loan,Male,Yes,0,Not Graduate,No,120,N,271300,74940,3220000,Badulla,Private Sector,Low Risk
+LP0328,Housing Loan,Male,No,0,Not Graduate,Yes,120,Y,134760,176860,3740000,Nuwara Eliya,Government,Low Risk
+LP0329,Business/SME Loan,Female,Yes,1,Not Graduate,Yes,36,N,243320,119560,1570000,Badulla,Government,Very Low Risk
+LP0330,Personal Loan,Female,No,0,Graduate,No,36,N,151780,112140,1880000,Badulla,Private Sector,Very Low Risk
+LP0331,Housing Loan,Male,Yes,1,Not Graduate,Yes,120,Y,263540,15380,3990000,Gampaha,Informal/Self-Employed,Very Low Risk
+LP0332,Housing Loan,Male,Yes,1,Graduate,Yes,120,Y,155140,15600,3200000,Ratnapura,Informal/Self-Employed,Low Risk
+LP0333,Housing Loan,Female,Yes,2,Not Graduate,No,120,Y,274820,198160,3960000,Gampaha,Private Sector,Very Low Risk
+LP0334,Housing Loan,Male,No,3+,Graduate,Yes,120,Y,184100,126060,4680000,Jaffna,Informal/Self-Employed,Very Low Risk
+LP0335,Housing Loan,Female,Yes,3+,Not Graduate,Yes,120,N,104380,79660,3380000,Kilinochchi,Government,High Risk
+LP0336,Business/SME Loan,Female,No,1,Not Graduate,Yes,60,Y,36040,190060,2610000,Kurunegala,Informal/Self-Employed,Very Low Risk
+LP0337,Housing Loan,Male,Yes,2,Not Graduate,Yes,120,Y,272880,174280,4300000,Ampara,Private Sector,Average Risk
+LP0338,Housing Loan,Male,Yes,1,Not Graduate,No,120,Y,287500,10420,3210000,Kalutara,Private Sector,Low Risk
+LP0339,Housing Loan,Female,No,1,Not Graduate,No,120,N,49720,182540,4670000,Kalutara,Private Sector,Very High Risk
+LP0340,Vehicle Lease,Female,Yes,1,Graduate,Yes,36,N,231100,151380,1150000,Matara,Private Sector,High Risk
+LP0341,Housing Loan,Male,Yes,2,Not Graduate,No,120,N,118800,115680,4730000,Mullaitivu,Private Sector,Very High Risk
+LP0342,Business/SME Loan,Female,No,3+,Not Graduate,Yes,60,Y,128180,91660,2970000,Monaragala,Private Sector,Very High Risk
+LP0343,Housing Loan,Male,Yes,2,Not Graduate,Yes,60,Y,91440,118920,2050000,Kegalle,Private Sector,Very Low Risk
+LP0344,Personal Loan,Female,Yes,0,Graduate,Yes,24,N,92480,98820,960000,Kandy,Government,High Risk
+LP0345,Housing Loan,Male,Yes,2,Not Graduate,Yes,120,N,220380,125340,4720000,Kalutara,Informal/Self-Employed,Very Low Risk
+LP0346,Vehicle Lease,Male,Yes,2,Graduate,No,60,Y,297600,142560,2500000,Anuradhapura,Private Sector,Low Risk
+LP0347,Business/SME Loan,Male,No,2,Not Graduate,Yes,36,N,242000,49220,1970000,Matara,Government,Very High Risk
+LP0348,Personal Loan,Female,No,2,Not Graduate,No,36,Y,267300,13700,1730000,Puttalam,Private Sector,Very Low Risk
+LP0349,Personal Loan,Female,Yes,3+,Graduate,No,24,Y,192500,43200,500000,Monaragala,Private Sector,Very Low Risk
+LP0350,Housing Loan,Male,No,0,Not Graduate,No,60,N,95820,140620,2960000,Mullaitivu,Private Sector,Low Risk
+LP0351,Housing Loan,Female,Yes,3+,Graduate,No,120,Y,110660,195180,3920000,Batticaloa,Private Sector,Low Risk
+LP0352,Housing Loan,Male,No,3+,Graduate,Yes,36,Y,132100,106820,1770000,Ampara,Government,Average Risk
+LP0353,Business/SME Loan,Male,Yes,2,Not Graduate,Yes,60,N,44060,760,2400000,Matale,Private Sector,Low Risk
+LP0354,Personal Loan,Female,Yes,1,Graduate,Yes,48,Y,192660,97500,1160000,Kalutara,Informal/Self-Employed,Very Low Risk
+LP0355,Personal Loan,Female,Yes,1,Not Graduate,No,24,N,41480,25120,530000,Ampara,Private Sector,Very Low Risk
+LP0356,Housing Loan,Male,Yes,3+,Not Graduate,Yes,120,N,144080,153940,4910000,Ratnapura,Private Sector,Very High Risk
+LP0357,Housing Loan,Female,Yes,3+,Graduate,No,120,Y,258480,43920,4580000,Mullaitivu,Private Sector,Very Low Risk
+LP0358,Housing Loan,Female,Yes,2,Graduate,Yes,120,Y,186960,143300,3520000,Colombo,Private Sector,Low Risk
+LP0359,Housing Loan,Male,No,3+,Graduate,No,120,N,134160,6020,3430000,Galle,Private Sector,Average Risk
+LP0360,Business/SME Loan,Male,Yes,2,Graduate,Yes,48,N,289500,150540,1920000,Ampara,Private Sector,Very High Risk
+LP0361,Personal Loan,Female,No,1,Not Graduate,No,60,Y,168480,127620,2400000,Galle,Government,Very Low Risk
+LP0362,Personal Loan,Male,Yes,1,Not Graduate,No,12,N,246480,12920,700000,Nuwara Eliya,Private Sector,Low Risk
+LP0363,Business/SME Loan,Male,No,0,Graduate,Yes,60,Y,106560,199020,2760000,Colombo,Government,Very High Risk
+LP0364,Housing Loan,Female,No,1,Not Graduate,No,120,N,94600,175780,3620000,Monaragala,Government,Very High Risk
+LP0365,Personal Loan,Male,No,3+,Not Graduate,No,36,Y,39760,177060,1660000,Polonnaruwa,Government,Average Risk
+LP0366,Housing Loan,Male,Yes,1,Not Graduate,Yes,120,Y,172280,86600,4860000,Batticaloa,Government,Very Low Risk
+LP0367,Housing Loan,Female,Yes,2,Not Graduate,No,120,N,220780,191200,3510000,Vavuniya,Private Sector,Average Risk
+LP0368,Business/SME Loan,Female,No,1,Graduate,Yes,36,Y,267460,140060,1910000,Badulla,Private Sector,Average Risk
+LP0369,Housing Loan,Male,Yes,0,Graduate,Yes,120,Y,93460,70740,4500000,Gampaha,Private Sector,Very Low Risk
+LP0370,Personal Loan,Male,No,1,Not Graduate,No,24,Y,285620,91160,880000,Kandy,Government,Very Low Risk
+LP0371,Housing Loan,Female,Yes,2,Graduate,Yes,120,Y,63340,131580,4420000,Jaffna,Informal/Self-Employed,Very Low Risk
+LP0372,Housing Loan,Female,No,2,Graduate,No,120,Y,226580,169480,4040000,Jaffna,Private Sector,Very Low Risk
+LP0373,Housing Loan,Female,No,3+,Graduate,No,120,Y,112280,193560,3010000,Polonnaruwa,Private Sector,Very Low Risk
+LP0374,Housing Loan,Female,Yes,1,Not Graduate,Yes,120,Y,101060,81640,3820000,Galle,Informal/Self-Employed,Very High Risk
+LP0375,Business/SME Loan,Male,No,2,Not Graduate,Yes,60,Y,185220,83660,2560000,Badulla,Informal/Self-Employed,Very Low Risk
+LP0376,Housing Loan,Female,Yes,0,Not Graduate,No,60,Y,50000,173040,2590000,Kandy,Government,Very Low Risk
+LP0377,Business/SME Loan,Female,No,3+,Graduate,Yes,36,N,210840,75080,1640000,Kurunegala,Private Sector,Very High Risk
+LP0378,Business/SME Loan,Male,No,0,Not Graduate,Yes,60,Y,57760,34480,2740000,Kandy,Informal/Self-Employed,Very Low Risk
+LP0379,Business/SME Loan,Female,Yes,1,Not Graduate,Yes,48,N,139000,27520,1830000,Kilinochchi,Private Sector,Low Risk
+LP0380,Housing Loan,Male,Yes,1,Graduate,No,60,Y,104240,174120,3000000,Gampaha,Government,Very Low Risk
+LP0381,Housing Loan,Female,Yes,1,Not Graduate,No,60,Y,57340,177880,2680000,Gampaha,Private Sector,Very Low Risk
+LP0382,Housing Loan,Female,No,3+,Not Graduate,Yes,120,N,193780,33060,4560000,Gampaha,Private Sector,Very High Risk
+LP0383,Housing Loan,Female,Yes,2,Graduate,No,120,Y,210260,41320,4920000,Colombo,Private Sector,Low Risk
+LP0384,Personal Loan,Male,No,3+,Graduate,No,36,N,39080,440,1400000,Galle,Private Sector,Average Risk
+LP0385,Housing Loan,Male,No,0,Graduate,Yes,120,Y,226320,49200,4030000,Anuradhapura,Private Sector,Low Risk
+LP0386,Housing Loan,Female,Yes,3+,Not Graduate,No,120,Y,85440,118520,4250000,Batticaloa,Government,Low Risk
+LP0387,Personal Loan,Male,Yes,0,Not Graduate,No,24,N,104520,125020,950000,Kandy,Government,High Risk
+LP0388,Personal Loan,Male,No,3+,Not Graduate,No,12,Y,174640,189920,870000,Puttalam,Private Sector,Very Low Risk
+LP0389,Business/SME Loan,Male,No,2,Graduate,Yes,36,Y,256780,145900,1910000,Galle,Informal/Self-Employed,Low Risk
+LP0390,Personal Loan,Male,Yes,0,Graduate,No,36,Y,275620,66000,1490000,Kandy,Private Sector,Low Risk
+LP0391,Housing Loan,Male,Yes,1,Not Graduate,No,120,Y,126120,125580,3770000,Nuwara Eliya,Private Sector,Average Risk
+LP0392,Vehicle Lease,Male,Yes,1,Not Graduate,No,60,Y,73800,171060,2390000,Gampaha,Private Sector,Very Low Risk
+LP0393,Personal Loan,Female,Yes,3+,Graduate,No,24,Y,212160,147060,840000,Monaragala,Private Sector,Very Low Risk
+LP0394,Housing Loan,Female,Yes,1,Graduate,Yes,48,N,273560,74540,1960000,Polonnaruwa,Private Sector,Low Risk
+LP0395,Personal Loan,Male,No,0,Graduate,Yes,12,Y,87500,125440,790000,Batticaloa,Informal/Self-Employed,Very Low Risk
+LP0396,Housing Loan,Female,No,1,Graduate,No,120,Y,141840,119900,3830000,Galle,Private Sector,Average Risk
+LP0397,Vehicle Lease,Female,No,2,Not Graduate,No,36,Y,58800,189520,1330000,Mullaitivu,Private Sector,Average Risk
+LP0398,Housing Loan,Female,No,2,Graduate,Yes,120,Y,281840,10280,4180000,Gampaha,Private Sector,Very Low Risk
+LP0399,Housing Loan,Female,Yes,3+,Not Graduate,Yes,120,N,208540,8960,3300000,Kandy,Private Sector,Very High Risk
+LP0400,Housing Loan,Male,Yes,0,Not Graduate,No,120,Y,265200,120380,4730000,Colombo,Private Sector,Low Risk
+LP0401,Housing Loan,Female,Yes,2,Not Graduate,Yes,120,Y,151180,106860,3930000,Kegalle,Private Sector,Very Low Risk
+LP0402,Housing Loan,Female,No,2,Graduate,No,120,Y,260600,160660,3190000,Colombo,Private Sector,Average Risk
+LP0403,Business/SME Loan,Male,No,0,Graduate,Yes,60,N,170200,50400,2030000,Hambantota,Government,Low Risk
+LP0404,Business/SME Loan,Male,Yes,1,Graduate,Yes,48,N,254140,61620,1510000,Colombo,Government,Low Risk
+LP0405,Housing Loan,Female,Yes,1,Graduate,Yes,60,Y,172340,28560,2640000,Matale,Private Sector,Very Low Risk
+LP0406,Housing Loan,Female,No,3+,Not Graduate,Yes,48,Y,251620,79340,1990000,Galle,Private Sector,Average Risk
+LP0407,Housing Loan,Female,No,1,Graduate,No,120,Y,213060,128900,4810000,Mullaitivu,Private Sector,Very Low Risk
+LP0408,Vehicle Lease,Female,Yes,0,Graduate,Yes,48,N,89780,182280,1320000,Monaragala,Private Sector,High Risk
+LP0409,Business/SME Loan,Female,Yes,2,Not Graduate,Yes,36,Y,270800,43180,1590000,Kandy,Private Sector,Average Risk
+LP0410,Housing Loan,Female,No,1,Graduate,No,120,Y,214360,102640,4840000,Kandy,Government,Very Low Risk
+LP0411,Housing Loan,Male,Yes,3+,Not Graduate,Yes,120,Y,154560,50940,4360000,Mullaitivu,Informal/Self-Employed,Very Low Risk
+LP0412,Housing Loan,Female,Yes,1,Not Graduate,Yes,120,Y,271140,59580,4750000,Kurunegala,Private Sector,Average Risk
+LP0413,Housing Loan,Female,Yes,0,Not Graduate,No,120,Y,159420,52980,3240000,Gampaha,Private Sector,Average Risk
+LP0414,Housing Loan,Male,No,3+,Not Graduate,Yes,60,Y,87260,170100,2500000,Nuwara Eliya,Private Sector,Very High Risk
+LP0415,Housing Loan,Male,No,1,Not Graduate,Yes,120,Y,243860,61660,3330000,Kandy,Informal/Self-Employed,Low Risk
+LP0416,Personal Loan,Male,No,3+,Not Graduate,No,60,Y,232780,20740,2220000,Gampaha,Private Sector,Very Low Risk
+LP0417,Housing Loan,Male,No,0,Not Graduate,No,120,Y,53540,69780,3760000,Kandy,Private Sector,Very Low Risk
+LP0418,Housing Loan,Female,No,2,Not Graduate,No,60,N,125200,152080,2550000,Colombo,Private Sector,Very Low Risk
+LP0419,Vehicle Lease,Female,No,0,Graduate,Yes,48,Y,30220,150880,1120000,Badulla,Government,Low Risk
+LP0420,Vehicle Lease,Female,No,0,Graduate,No,36,Y,135040,52680,1220000,Gampaha,Government,Low Risk
+LP0421,Housing Loan,Female,Yes,0,Graduate,Yes,60,N,117980,79660,3000000,Vavuniya,Private Sector,Low Risk
+LP0422,Housing Loan,Female,Yes,0,Graduate,Yes,48,Y,261120,35560,1730000,Puttalam,Private Sector,Low Risk
+LP0423,Housing Loan,Female,Yes,2,Not Graduate,Yes,120,N,254280,158040,4240000,Kalutara,Private Sector,Very Low Risk
+LP0424,Business/SME Loan,Male,Yes,2,Graduate,Yes,36,Y,261260,102200,1700000,Galle,Government,Low Risk
+LP0425,Housing Loan,Female,Yes,3+,Not Graduate,Yes,120,Y,250440,103780,3240000,Vavuniya,Private Sector,Very Low Risk
+LP0426,Housing Loan,Male,Yes,1,Graduate,Yes,120,Y,194680,147560,4800000,Badulla,Private Sector,Low Risk
+LP0427,Housing Loan,Male,Yes,2,Graduate,Yes,120,Y,212700,22480,4470000,Kandy,Private Sector,Very Low Risk
+LP0428,Business/SME Loan,Female,No,2,Graduate,Yes,48,Y,241640,13940,1690000,Puttalam,Private Sector,Average Risk
+LP0429,Housing Loan,Male,No,1,Not Graduate,Yes,120,Y,138900,43580,4710000,Kilinochchi,Private Sector,Very Low Risk
+LP0430,Housing Loan,Female,Yes,2,Graduate,Yes,120,N,244740,191920,4860000,Matara,Private Sector,High Risk
+LP0431,Housing Loan,Male,Yes,0,Not Graduate,No,120,Y,242060,105020,3660000,Colombo,Private Sector,Very Low Risk
+LP0432,Vehicle Lease,Female,No,0,Not Graduate,No,60,Y,293560,184700,2130000,Galle,Private Sector,Low Risk
+LP0433,Housing Loan,Male,Yes,1,Graduate,No,120,Y,161400,38580,4730000,Ampara,Private Sector,Low Risk
+LP0434,Housing Loan,Female,Yes,3+,Graduate,Yes,120,Y,213920,20260,3350000,Mullaitivu,Government,Very Low Risk
+LP0435,Housing Loan,Female,No,3+,Graduate,No,120,Y,194240,4520,3140000,Mullaitivu,Private Sector,Very Low Risk
+LP0436,Housing Loan,Female,Yes,1,Not Graduate,No,120,Y,38120,146420,3690000,Galle,Private Sector,Low Risk
+LP0437,Personal Loan,Female,No,1,Graduate,No,60,Y,214120,36560,2100000,Matara,Private Sector,High Risk
+LP0438,Housing Loan,Female,Yes,0,Not Graduate,Yes,120,Y,118620,158180,4250000,Nuwara Eliya,Private Sector,Low Risk
+LP0439,Housing Loan,Male,No,3+,Not Graduate,Yes,120,Y,230600,111760,3570000,Galle,Private Sector,Low Risk
+LP0440,Personal Loan,Male,No,2,Graduate,Yes,48,Y,257600,40460,1380000,Badulla,Informal/Self-Employed,Very Low Risk
+LP0441,Housing Loan,Male,No,0,Graduate,Yes,48,Y,134860,99320,1910000,Hambantota,Private Sector,Very Low Risk
+LP0442,Vehicle Lease,Female,Yes,1,Not Graduate,No,60,N,160840,117820,2520000,Ratnapura,Government,Average Risk
+LP0443,Housing Loan,Male,No,3+,Not Graduate,No,120,Y,168720,21600,3580000,Nuwara Eliya,Private Sector,Very Low Risk
+LP0444,Vehicle Lease,Female,Yes,2,Not Graduate,No,60,Y,208120,100720,2760000,Jaffna,Private Sector,Very Low Risk
+LP0445,Housing Loan,Female,Yes,2,Graduate,No,120,N,112920,51260,4920000,Hambantota,Private Sector,Very High Risk
+LP0446,Housing Loan,Male,Yes,0,Not Graduate,Yes,120,Y,270920,65840,3830000,Galle,Informal/Self-Employed,Average Risk
+LP0447,Business/SME Loan,Male,Yes,3+,Graduate,Yes,60,Y,282220,71720,2710000,Polonnaruwa,Government,Average Risk
+LP0448,Personal Loan,Female,No,3+,Not Graduate,Yes,24,N,291520,88620,900000,Galle,Government,Low Risk
+LP0449,Vehicle Lease,Male,No,1,Not Graduate,No,60,Y,32800,136820,2450000,Gampaha,Private Sector,Very Low Risk
+LP0450,Personal Loan,Female,Yes,3+,Graduate,Yes,48,Y,285140,132860,1170000,Gampaha,Private Sector,Very Low Risk
+LP0451,Housing Loan,Female,Yes,3+,Not Graduate,Yes,120,Y,127640,79180,3130000,Ratnapura,Private Sector,Low Risk
+LP0452,Personal Loan,Female,No,0,Graduate,No,12,N,150240,3220,510000,Kalutara,Government,Low Risk
+LP0453,Housing Loan,Female,Yes,3+,Graduate,Yes,120,Y,49260,11860,4100000,Galle,Informal/Self-Employed,Very Low Risk
+LP0454,Business/SME Loan,Female,No,2,Not Graduate,Yes,48,Y,173020,67800,1740000,Kandy,Private Sector,Average Risk
+LP0455,Business/SME Loan,Male,Yes,0,Graduate,Yes,48,N,201280,119940,1590000,Ratnapura,Government,Very Low Risk
+LP0456,Vehicle Lease,Male,Yes,0,Graduate,Yes,48,Y,266540,127080,1350000,Mullaitivu,Private Sector,Low Risk
+LP0457,Housing Loan,Female,No,1,Not Graduate,Yes,120,Y,244660,13260,4740000,Gampaha,Private Sector,Very Low Risk
+LP0458,Business/SME Loan,Female,Yes,3+,Graduate,Yes,36,Y,102200,186480,1690000,Trincomalee,Private Sector,Low Risk
+LP0459,Business/SME Loan,Male,No,1,Graduate,Yes,48,Y,227680,10820,1760000,Matara,Government,Very Low Risk
+LP0460,Housing Loan,Male,Yes,2,Graduate,No,120,Y,167880,108660,3040000,Gampaha,Government,Very Low Risk
+LP0461,Vehicle Lease,Female,Yes,0,Not Graduate,No,60,N,299340,101860,2320000,Ampara,Government,Very Low Risk
+LP0462,Personal Loan,Male,Yes,0,Graduate,No,12,N,176220,17340,650000,Trincomalee,Private Sector,Very High Risk
+LP0463,Personal Loan,Female,No,0,Not Graduate,Yes,48,Y,32100,172460,1110000,Mannar,Informal/Self-Employed,Low Risk
+LP0464,Housing Loan,Male,Yes,2,Not Graduate,No,120,Y,140780,109380,4180000,Matara,Government,Low Risk
+LP0465,Housing Loan,Female,Yes,2,Graduate,Yes,120,Y,227460,125120,4810000,Kalutara,Government,Average Risk
+LP0466,Business/SME Loan,Male,Yes,1,Graduate,Yes,60,Y,275780,187960,2070000,Vavuniya,Government,Very Low Risk
+LP0467,Housing Loan,Female,Yes,1,Graduate,No,120,N,274160,23380,3170000,Vavuniya,Government,Very Low Risk
+LP0468,Personal Loan,Male,No,1,Not Graduate,Yes,24,N,246560,16600,840000,Kalutara,Private Sector,Very High Risk
+LP0469,Housing Loan,Male,No,3+,Graduate,Yes,120,Y,165740,33020,3160000,Polonnaruwa,Private Sector,Very Low Risk
+LP0470,Personal Loan,Female,Yes,0,Graduate,No,36,Y,72740,22720,1130000,Puttalam,Private Sector,Average Risk
+LP0471,Personal Loan,Male,No,0,Graduate,No,24,Y,262160,56200,990000,Batticaloa,Government,Very Low Risk
+LP0472,Housing Loan,Female,Yes,1,Graduate,No,120,Y,118900,173340,3040000,Matale,Private Sector,Average Risk
+LP0473,Business/SME Loan,Male,Yes,0,Graduate,Yes,36,Y,100600,190360,1980000,Ampara,Private Sector,Very Low Risk
+LP0474,Housing Loan,Female,Yes,1,Not Graduate,No,120,Y,55720,20380,3740000,Anuradhapura,Private Sector,Average Risk
+LP0475,Housing Loan,Male,No,3+,Not Graduate,No,120,Y,257420,104740,3530000,Nuwara Eliya,Government,Low Risk
+LP0476,Housing Loan,Female,No,3+,Graduate,Yes,120,Y,297000,25660,3250000,Ampara,Private Sector,Average Risk
+LP0477,Housing Loan,Male,No,2,Graduate,No,120,Y,171040,13180,4060000,Badulla,Private Sector,Very Low Risk
+LP0478,Personal Loan,Female,No,3+,Graduate,No,60,Y,103080,40200,2210000,Nuwara Eliya,Government,Low Risk
+LP0479,Housing Loan,Male,No,1,Graduate,No,120,N,172040,171800,4660000,Kandy,Private Sector,Average Risk
+LP0480,Business/SME Loan,Female,No,3+,Not Graduate,Yes,60,Y,77180,34660,2500000,Galle,Informal/Self-Employed,Low Risk
+LP0481,Housing Loan,Female,No,2,Graduate,Yes,120,N,192100,42500,4940000,Vavuniya,Informal/Self-Employed,Very High Risk
+LP0482,Housing Loan,Female,No,0,Not Graduate,Yes,120,Y,202720,43420,4420000,Ratnapura,Private Sector,Low Risk
+LP0483,Housing Loan,Male,No,1,Not Graduate,Yes,120,N,158820,165320,3730000,Colombo,Private Sector,Very High Risk
+LP0484,Personal Loan,Female,Yes,0,Graduate,Yes,12,N,130940,69420,840000,Puttalam,Informal/Self-Employed,Very High Risk
+LP0485,Business/SME Loan,Male,No,2,Not Graduate,Yes,60,Y,194540,180560,2650000,Colombo,Private Sector,Low Risk
+LP0486,Personal Loan,Female,No,2,Not Graduate,Yes,48,Y,134060,112480,1140000,Colombo,Government,Average Risk
+LP0487,Personal Loan,Male,No,2,Not Graduate,Yes,12,Y,223340,173820,570000,Matara,Informal/Self-Employed,Very Low Risk
+LP0488,Housing Loan,Female,No,0,Not Graduate,No,120,N,272980,166580,3500000,Kalutara,Government,High Risk
+LP0489,Housing Loan,Male,No,0,Graduate,No,120,Y,65960,41940,3920000,Gampaha,Private Sector,Average Risk
+LP0490,Housing Loan,Male,No,0,Graduate,Yes,120,Y,230740,101360,4800000,Gampaha,Government,Average Risk
+LP0491,Housing Loan,Female,No,0,Not Graduate,Yes,120,Y,222000,127940,4730000,Kegalle,Government,Low Risk
+LP0492,Housing Loan,Male,No,2,Graduate,Yes,120,N,135820,55140,3810000,Ampara,Private Sector,Very High Risk
+LP0493,Housing Loan,Male,No,2,Graduate,No,120,N,139900,78400,4870000,Matara,Private Sector,High Risk
+LP0494,Personal Loan,Female,No,1,Graduate,No,48,N,228000,163720,1250000,Kandy,Private Sector,High Risk
+LP0495,Housing Loan,Male,No,1,Graduate,Yes,60,N,252600,38000,2230000,Hambantota,Government,Low Risk
+LP0496,Personal Loan,Male,Yes,0,Graduate,No,24,Y,155680,52200,960000,Colombo,Government,Very Low Risk
+LP0497,Personal Loan,Male,Yes,3+,Not Graduate,No,12,Y,175700,138000,640000,Ampara,Private Sector,Low Risk
+LP0498,Housing Loan,Female,No,3+,Graduate,Yes,120,Y,56000,28980,4100000,Kandy,Informal/Self-Employed,Very Low Risk
+LP0499,Business/SME Loan,Male,No,2,Graduate,Yes,36,Y,167380,174760,1960000,Vavuniya,Private Sector,Average Risk
+LP0500,Personal Loan,Female,Yes,2,Graduate,No,12,Y,218700,100340,750000,Vavuniya,Private Sector,Average Risk
