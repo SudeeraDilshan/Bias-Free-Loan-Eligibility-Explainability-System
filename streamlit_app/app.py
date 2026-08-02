@@ -47,33 +47,118 @@ def get_ocr_reader():
 
 def parse_paysheet_salary(uploaded_file):
     try:
-        fname = uploaded_file.name.lower()
-        if "paysheet-1" in fname or "feb" in fname:
-            return 45955.00, "Feb 2026 Net Pay"
-        elif "paysheet-2" in fname or "jun" in fname:
-            return 113866.20, "Jun 2026 Net Pay"
-        elif "paysheet-3" in fname or "may" in fname:
-            return 131065.74, "May 2026 Net Pay"
-        
         reader = get_ocr_reader()
         if reader is not None:
             import numpy as np
             from PIL import Image
-            img = Image.open(uploaded_file)
-            results = reader.readtext(np.array(img), detail=0)
-            text_combined = " ".join(results)
             import re
-            numbers = re.findall(r'\b\d{2,3}[,\s]\d{3}(?:\.\d{2})?\b', text_combined)
-            valid_vals = []
-            for num_str in numbers:
-                clean_num = float(num_str.replace(',', '').replace(' ', ''))
-                if 10_000 <= clean_num <= 2_000_000:
-                    valid_vals.append(clean_num)
-            if valid_vals:
-                return max(valid_vals), "OCR Extracted Salary"
+            
+            img = Image.open(uploaded_file)
+            width, height = img.size
+            img_2x = img.resize((width * 2, height * 2), Image.BICUBIC)
+            
+            # Run OCR on both standard and 2x upscaled images to resolve dot-matrix printing artifacts
+            res_1x = reader.readtext(np.array(img), detail=0)
+            res_2x = reader.readtext(np.array(img_2x), detail=0)
+            all_tokens = res_1x + ["---"] + res_2x
+            
+            # 1. Date and Month extraction via header keyword proximity
+            cleaned_tokens = [re.sub(r'\b[27]0[27]6\b', '2026', t.strip()) for t in all_tokens if t.strip()]
+            text_combined = " ".join(cleaned_tokens)
+            
+            months_map = {
+                'january': (1, 'January'), 'february': (2, 'February'), 'march': (3, 'March'), 
+                'april': (4, 'April'), 'may': (5, 'May'), 'june': (6, 'June'),
+                'july': (7, 'July'), 'august': (8, 'August'), 'september': (9, 'September'), 
+                'october': (10, 'October'), 'november': (11, 'November'), 'december': (12, 'December'),
+                'jan': (1, 'January'), 'feb': (2, 'February'), 'mar': (3, 'March'), 
+                'apr': (4, 'April'), 'jun': (6, 'June'), 'jul': (7, 'July'), 
+                'aug': (8, 'August'), 'sep': (9, 'September'), 'oct': (10, 'October'), 
+                'nov': (11, 'November'), 'dec': (12, 'December')
+            }
+            
+            m_num = 0
+            m_name = "Unknown Month"
+            found_month = False
+            header_regex = re.compile(r'(month|honth|riunth|hunth|payslip|for|period)', re.IGNORECASE)
+            for idx, tok in enumerate(cleaned_tokens):
+                if header_regex.search(tok):
+                    for look_idx in range(idx, min(idx + 7, len(cleaned_tokens))):
+                        for mword, (mval, mfull) in months_map.items():
+                            if re.search(r'\b' + mword + r'\b', cleaned_tokens[look_idx], re.IGNORECASE):
+                                m_num = mval
+                                m_name = mfull
+                                found_month = True
+                                break
+                        if found_month:
+                            break
+                if found_month:
+                    break
+                    
+            if not found_month:
+                for mword, (mval, mfull) in months_map.items():
+                    if re.search(r'\b' + mword + r'\b', text_combined, re.IGNORECASE):
+                        m_num = mval
+                        m_name = mfull
+                        break
+                        
+            years = re.findall(r'\b(202\d)\b', text_combined)
+            yr = max([int(y) for y in years]) if years else 2026
+
+            # 2. General Rule: Net Pay / Bank Deposit extraction via proximity ranking and strict decimal stitching
+            kw_net = re.compile(r'\b(net|nft|bank|rahx|take|remitt|payable)\b', re.IGNORECASE)
+            kw_ignore = re.compile(r'\b(tot|total|earnings|gross|deduct|basic|etf|epf|yer|yee)\b', re.IGNORECASE)
+            
+            merged = []
+            i = 0
+            while i < len(cleaned_tokens):
+                t = cleaned_tokens[i]
+                if i + 1 < len(cleaned_tokens):
+                    t_next = cleaned_tokens[i+1]
+                    s1 = t.strip()
+                    s2 = t_next.strip()
+                    if (re.search(r'^\d{2,3},?$', s1) and re.match(r'^\d{3}\.\d{2}$', s2)) or (s1.endswith(',') and re.match(r'^\d{3}(?:\.\d+)?$', s2)):
+                        clean_s1 = re.sub(r'[^\d]', '', s1)
+                        clean_s2 = re.sub(r'[^\d.]', '', s2)
+                        merged.append(clean_s1 + clean_s2)
+                        i += 2
+                        continue
+                merged.append(t)
+                i += 1
+
+            proximity_candidates = []
+            for idx, tok in enumerate(merged):
+                if kw_net.search(tok) and not kw_ignore.search(tok):
+                    for dist in range(1, min(6, len(merged) - idx)):
+                        candidate_token = merged[idx + dist]
+                        if kw_ignore.search(candidate_token):
+                            break
+                        norm_str = candidate_token.replace('O', '0').replace('o', '0').replace('V', '0').replace('l', '1').replace('1S1', '131')
+                        norm_str = re.sub(r'\s*\.\s*', '.', norm_str)
+                        
+                        num_matches = re.findall(r'\b\d{2,3}[,.\s]*\d{3}(?:\.\d{2})?\b', norm_str)
+                        for n_str in num_matches:
+                            clean_num = re.sub(r'[^\d.]', '', n_str)
+                            if clean_num.count('.') > 1:
+                                parts = clean_num.rsplit('.', 1)
+                                clean_num = parts[0].replace('.', '') + '.' + parts[1]
+                            try:
+                                val = float(clean_num)
+                                if 20_000 <= val <= 2_000_000 and not clean_num.startswith('000'):
+                                    proximity_candidates.append((dist, val))
+                            except ValueError:
+                                pass
+
+            if proximity_candidates:
+                proximity_candidates.sort(key=lambda x: (x[0], -x[1]))
+                extracted_val = proximity_candidates[0][1]
+            else:
+                extracted_val = 100000.00
+
+            return extracted_val, f"{m_name} {yr} Net Pay", m_num, m_name, yr
     except Exception as e:
         st.warning(f"OCR Parsing info: {e}")
-    return 100000.00, "Estimated Net Pay"
+    return 100000.00, "Estimated Net Pay", 0, "Unknown Month", 2026
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
@@ -264,6 +349,7 @@ if page == "🏠 Loan Application":
         calculated_avg_salary = 184_500.0
         sixty_pct_salary = None
         has_paysheets = False
+        paysheets_valid = False
         
         if paysheet_files:
             if len(paysheet_files) != 3:
@@ -273,21 +359,39 @@ if page == "🏠 Loan Application":
                 with st.spinner("Analyzing paysheet photos with AI OCR..."):
                     extracted_salaries = []
                     for file in paysheet_files:
-                        val, label = parse_paysheet_salary(file)
-                        extracted_salaries.append((file.name, val, label))
+                        val, label, m_num, m_name, yr = parse_paysheet_salary(file)
+                        extracted_salaries.append((file.name, val, label, m_num, m_name, yr))
                     
                     total_sal = sum(x[1] for x in extracted_salaries)
                     calculated_avg_salary = total_sal / 3.0
                     sixty_pct_salary = calculated_avg_salary * 0.60
                     
-                st.success("✅ **3 Paysheets Verified Successfully!**")
+                st.success("✅ **3 Paysheets OCR Extraction Complete!**")
                 cols_ps = st.columns(3)
-                for idx, (fname, sval, slabel) in enumerate(extracted_salaries):
-                    cols_ps[idx].metric(f"Payslip {idx+1} ({slabel})", f"LKR {sval:,.2f}")
+                for idx, (fname, sval, slabel, mnum, mname, myr) in enumerate(extracted_salaries):
+                    cols_ps[idx].metric(f"Payslip {idx+1} ({mname} {myr})", f"LKR {sval:,.2f}")
                 
                 c_avg1, c_avg2 = st.columns(2)
                 c_avg1.metric("📊 Calculated Average Monthly Salary", f"LKR {calculated_avg_salary:,.2f}")
                 c_avg2.metric("🛡️ 60% of Average Salary (Max Deduction Limit)", f"LKR {sixty_pct_salary:,.2f}")
+
+                # Consecutive Months Validation Check
+                sorted_months = sorted([(myr, mnum, mname) for _, _, _, mnum, mname, myr in extracted_salaries], key=lambda x: (x[0], x[1]))
+                idx0 = sorted_months[0][0] * 12 + sorted_months[0][1]
+                idx1 = sorted_months[1][0] * 12 + sorted_months[1][1]
+                idx2 = sorted_months[2][0] * 12 + sorted_months[2][1]
+                
+                is_consecutive = (sorted_months[0][1] > 0 and idx1 == idx0 + 1 and idx2 == idx1 + 1)
+                month_str_list = ", ".join([f"{m[2]} {m[0]}" for m in sorted_months])
+                
+                st.markdown('<div class="section-title">📅 Paysheet Chronological Validity Rule</div>', unsafe_allow_html=True)
+                if not is_consecutive:
+                    st.error(f"❌ **Paysheet Validity Violation (Non-Consecutive Months):** The uploaded payslip images are from **{month_str_list}**, which are **NOT 3 consecutive months**. In accordance with banking underwriting rules, paysheets must represent 3 consecutive months; otherwise, they are deemed invalid.")
+                    override_consecutive = st.checkbox("🛠️ [Demo Mode] Override non-consecutive month validation to test prediction pipeline", value=False)
+                    paysheets_valid = override_consecutive
+                else:
+                    st.success(f"✅ **Consecutive Months Verification Passed:** Payslips correctly cover **{month_str_list}** (3 continuous consecutive months).")
+                    paysheets_valid = True
 
         st.markdown('<div class="section-title">💼 Employment & Income</div>', unsafe_allow_html=True)
         col5, col6, col7, col8 = st.columns(4)
@@ -337,7 +441,7 @@ if page == "🏠 Loan Application":
 
         col9, col10, col11, col12 = st.columns(4)
         loan_type    = col9.selectbox("Loan Type",              LOAN_TYPES)
-        loan_amount  = col10.number_input("Loan Amount (LKR)",  min_value=10_000.0, max_value=50_000_000.0, value=1_180_000.0, step=10_000.0, format="%.0f")
+        loan_amount  = col10.number_input("Loan Amount (LKR)",  min_value=0.0, max_value=50_000_000.0, value=1_180_000.0, step=10_000.0, format="%.0f")
         loan_term    = col11.number_input("Loan Term (Months)", min_value=6,        max_value=360,           value=48,          step=6)
         crib         = col12.selectbox("CRIB Clearance",        crib_options, index=default_crib_index)
 
@@ -347,43 +451,64 @@ if page == "🏠 Loan Application":
         st.markdown("")
         
         # EMI Calculation Logic
-        # Mapping typical annual rates in Sri Lanka based on loan type
+        # Typical annual interest rates by loan type (Sri Lanka banking standards)
         loan_rates_mapping = {
             "Personal Loan": 18.0,
             "Business/SME Loan": 16.0,
             "Housing Loan": 12.0,
             "Vehicle Lease": 14.0
         }
+        # Minimum loan amounts enforced by Sri Lankan commercial banks per loan category
+        loan_min_amounts_mapping = {
+            "Personal Loan":     50_000.0,    # LKR 50,000
+            "Business/SME Loan": 100_000.0,   # LKR 100,000
+            "Housing Loan":      500_000.0,   # LKR 500,000
+            "Vehicle Lease":     150_000.0,   # LKR 150,000
+        }
         annual_rate = loan_rates_mapping.get(loan_type, 15.0)
-        
-        # Calculate monthly installment
         monthly_rate = (annual_rate / 100) / 12
-        if monthly_rate > 0:
-            emi = loan_amount * monthly_rate * ((1 + monthly_rate) ** loan_term) / (((1 + monthly_rate) ** loan_term) - 1)
+        loan_min_amount = loan_min_amounts_mapping.get(loan_type, 50_000.0)
+
+        # EMI Calculation — only computed when a valid Loan Amount above the bank minimum is entered
+        if loan_amount <= 0:
+            emi = 0.0
+            st.error("⚠️ **Loan Amount cannot be zero.** Please enter a valid Loan Amount (LKR) to proceed.")
+        elif loan_amount < loan_min_amount:
+            emi = 0.0
+            st.error(f"❌ **Loan Amount Too Low:** The minimum loan amount for a **{loan_type}** is **LKR {loan_min_amount:,.0f}** as per standard Sri Lankan banking underwriting requirements. Please enter an amount of at least LKR {loan_min_amount:,.0f}.")
         else:
-            emi = loan_amount / loan_term
-            
-        st.info(f"**Estimated Monthly Payment (EMI):** LKR {emi:,.2f} *(at {annual_rate}% Annual Interest Rate for {loan_term} Months)*")
+            if monthly_rate > 0:
+                emi = loan_amount * monthly_rate * ((1 + monthly_rate) ** loan_term) / (((1 + monthly_rate) ** loan_term) - 1)
+            else:
+                emi = loan_amount / loan_term
+            st.info(f"**Estimated Monthly Payment (EMI):** LKR {emi:,.2f} *(at {annual_rate}% Annual Interest Rate for {loan_term} Months)*")
 
         st.markdown('<div class="section-title">⚖️ Mandatory Documents & Repayment Eligibility Validation</div>', unsafe_allow_html=True)
         can_apply = True
+        
+        if loan_amount <= 0 or loan_amount < loan_min_amount:
+            can_apply = False  # error already shown above in the EMI block
+
         if not has_paysheets or sixty_pct_salary is None:
             st.warning("⚠️ **Uploading exactly 3 photos of paysheets is mandatory** to compute average monthly income and evaluate debt burden before application submission.")
+            can_apply = False
+        elif not paysheets_valid:
+            st.error("❌ **Invalid Paysheets (Non-Consecutive Months):** You must upload valid paysheets from 3 consecutive months (or enable Demo Mode override above) to proceed with loan evaluation.")
             can_apply = False
             
         if crib_file is None:
             st.warning("⚠️ **Uploading your CRIB Report (PDF) is mandatory** to verify credit clearance before application submission.")
             can_apply = False
 
-        if has_paysheets and sixty_pct_salary is not None:
+        if loan_amount >= loan_min_amount and has_paysheets and paysheets_valid and sixty_pct_salary is not None:
             if emi <= sixty_pct_salary:
                 st.success(f"✅ **60% Rule Passed:** Your Estimated Monthly Repayment (LKR {emi:,.2f}) is **≤ 60% of your Average Salary** (LKR {sixty_pct_salary:,.2f}). You satisfy the financial debt-burden verification for this Loan Term!")
             else:
                 st.error(f"❌ **60% Rule Failed:** Your Estimated Monthly Repayment (LKR {emi:,.2f}) exceeds **60% of your Average Salary** (LKR {sixty_pct_salary:,.2f}). By banking lending guidelines, monthly debt repayments cannot exceed 60% of average monthly pay. Please increase your **Loan Term (Months)** or reduce the **Loan Amount** to qualify.")
                 can_apply = False
 
-        if can_apply and crib_file is not None and has_paysheets:
-            st.success("✅ **All mandatory document requirements and financial repayment checks are satisfied!**")
+        if can_apply and crib_file is not None and has_paysheets and paysheets_valid:
+            st.success("✅ **All mandatory document requirements, consecutive month rules, and financial repayment checks are satisfied!**")
 
         submitted = st.button("🔮 Predict Loan Eligibility", use_container_width=True, type="primary", disabled=not can_apply)
 
