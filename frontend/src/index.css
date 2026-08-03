@@ -12,8 +12,8 @@
   --danger: #ef4444;
   --warning: #f59e0b;
   
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(30, 41, 59, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -26,13 +26,12 @@
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg-primary);
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.2) 0, transparent 50%);
+  background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: var(--text-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 /* Glassmorphism Utilities */

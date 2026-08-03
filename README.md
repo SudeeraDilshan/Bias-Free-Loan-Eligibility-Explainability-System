@@ -95,9 +95,10 @@ Bias-Free-Loan-Eligibility-Explainability-System-version_2/
 │   ├── .env.example
 │   └── venv/                       # Python virtual environment
 │
-├── streamlit_app/                  # Streamlit frontend (replaces React)
-│   ├── app.py                      # Single-file multi-page Streamlit UI
-│   └── requirements.txt            # Streamlit-specific deps (including PyPDF2)
+├── frontend/                       # React frontend
+│   ├── src/                        # React source code
+│   ├── package.json                # Node.js dependencies
+│   └── vite.config.js              # Vite configuration
 │
 ├── ml/                             # Machine learning pipeline
 │   ├── data/
@@ -161,8 +162,10 @@ With the virtual environment activated, install both the backend and frontend de
 # Install Backend Dependencies (FastAPI, ML, etc.)
 pip install -r backend/requirements.txt
 
-# Install Frontend Dependencies (Streamlit, PyPDF2, etc.)
-pip install -r streamlit_app/requirements.txt
+# Install Frontend Dependencies (React, Vite, etc.)
+cd frontend
+npm install
+cd ..
 ```
 
 ### Step 3 — Train the ML Model
@@ -191,25 +194,23 @@ uvicorn app.main:app --reload --port 8000
 > ⚠️ **First run**: The backend downloads the Qwen2.5-0.5B model (~900 MB). Wait for the message:
 > `✓ Local LLM Ready (CPU)` before proceeding to the next step.
 
-### Step 5 — Start the Streamlit Frontend
+### Step 5 — Start the React Frontend
 
-Open a **second, new terminal** window, navigate to the project root, activate the environment, and start the frontend:
+Open a **second, new terminal** window, navigate to the project root, and start the frontend:
 
 ```powershell
 cd Bias-Free-Loan-Eligibility-Explainability-System-version_2
+cd frontend
 
-# Activate the virtual environment again in this new terminal
-.\backend\venv\Scripts\activate
-
-# Run the Streamlit application
-streamlit run streamlit_app/app.py --server.port 8501
+# Run the Vite development server
+npm run dev
 ```
 
-Then open **http://localhost:8501** in your browser.
+Then open **http://localhost:3000** in your browser.
 
 | Service | URL |
 |---------|-----|
-| Streamlit UI | http://localhost:8501 |
+| React UI | http://localhost:3000 |
 | FastAPI Backend | http://localhost:8000 |
 | API Swagger Docs | http://localhost:8000/docs |
 
@@ -242,7 +243,7 @@ Running the pipeline will automatically generate and overwrite the following fil
 
 ---
 
-## 🖥️ Streamlit UI Pages
+## 🖥️ React UI Pages
 
 | Page | Description |
 |------|-------------|
@@ -368,7 +369,7 @@ PORT=8000
 DEBUG=False
 MODEL_PATH=../ml/models/xgboost_model.joblib
 SCALER_PATH=../ml/models/scaler.joblib
-CORS_ORIGINS=["http://localhost:8501"]
+CORS_ORIGINS=["http://localhost:3000"]
 DATABASE_URL=sqlite:///./app.db
 ```
 
@@ -376,7 +377,7 @@ DATABASE_URL=sqlite:///./app.db
 
 ## 🚢 Docker Deployment (Backend Only)
 
-The Streamlit frontend runs as a Python process and does not need Docker. Only the backend is Dockerised:
+The React frontend runs as a Node.js process and does not need Docker. Only the backend is Dockerised:
 
 ```bash
 # Build and start the backend container
@@ -386,8 +387,9 @@ docker-compose up --build
 # http://localhost:8000
 # http://localhost:8000/docs
 
-# Then run Streamlit locally:
-.\backend\venv\Scripts\streamlit.exe run streamlit_app\app.py --server.port 8501
+# Then run React frontend locally:
+cd frontend
+npm run dev
 ```
 
 ---

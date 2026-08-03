@@ -1,6 +1,4 @@
-import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const PredictionResults = ({ prediction, setPrediction }) => {
   const navigate = useNavigate();
@@ -19,12 +17,6 @@ const PredictionResults = ({ prediction, setPrediction }) => {
   const approvalPct = prediction.approval_probability * 100;
   const rejectionPct = prediction.rejection_probability * 100;
   
-  const pieData = [
-    { name: 'Approval', value: approvalPct },
-    { name: 'Rejection', value: rejectionPct }
-  ];
-  const COLORS = ['#10b981', '#ef4444'];
-
   return (
     <div className="animate-fade-in">
       <div className="glass-panel" style={{ 
@@ -41,65 +33,52 @@ const PredictionResults = ({ prediction, setPrediction }) => {
         </p>
       </div>
 
+      {prediction.llm_explanation && (
+        <div className="glass-panel" style={{ padding: '2.5rem', marginBottom: '2rem', border: '1px solid rgba(59, 130, 246, 0.4)' }}>
+          <h2 style={{ color: 'var(--accent-primary)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            🤖 AI Explanation
+          </h2>
+          <div style={{ fontSize: '1.25rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
+            {prediction.llm_explanation}
+          </div>
+        </div>
+      )}
+
+      {!prediction.llm_explanation && (
+        <div className="glass-panel" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
+          <h2 style={{ color: 'var(--accent-primary)', marginBottom: '1.5rem' }}>📋 Decision Reasoning</h2>
+          <div style={{ fontSize: '1.25rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
+            {prediction.reasoning_summary}
+          </div>
+        </div>
+      )}
+
+      <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Technical Details</h3>
+      
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
         <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Approval Probability</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, margin: '0.5rem 0', color: 'var(--text-primary)' }}>{approvalPct.toFixed(1)}%</div>
+          <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Model Confidence</div>
+          <div style={{ fontSize: '2rem', fontWeight: 700, margin: '0.5rem 0', color: 'var(--text-primary)' }}>{(prediction.confidence_score * 100).toFixed(1)}%</div>
         </div>
         <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Confidence Score</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, margin: '0.5rem 0', color: 'var(--text-primary)' }}>{(prediction.confidence_score * 100).toFixed(1)}%</div>
-        </div>
-        <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Risk Level</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, margin: '0.5rem 0', color: prediction.risk_level === 'Low' ? 'var(--success)' : (prediction.risk_level === 'Medium' ? 'var(--warning)' : 'var(--danger)') }}>
+          <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Risk Level</div>
+          <div style={{ fontSize: '2rem', fontWeight: 700, margin: '0.5rem 0', color: prediction.risk_level === 'Low' ? 'var(--success)' : (prediction.risk_level === 'Medium' ? 'var(--warning)' : 'var(--danger)') }}>
             {prediction.risk_level}
           </div>
         </div>
-      </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
-        <div className="glass-panel" style={{ padding: '2rem' }}>
-          <h3 style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '0.75rem', marginBottom: '1.5rem' }}>Probability Split</h3>
-          <div style={{ height: '250px' }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
-                  {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
+        <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
+          <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Probability Split</div>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '0.75rem', fontSize: '1.1rem' }}>
+            <span style={{ color: '#10b981', fontWeight: 'bold' }}>{approvalPct.toFixed(0)}% App</span>
+            <span style={{ color: 'var(--text-secondary)' }}>|</span>
+            <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{rejectionPct.toFixed(0)}% Rej</span>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><span style={{ width: 12, height: 12, borderRadius: '50%', background: COLORS[0] }}></span> Approval</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><span style={{ width: 12, height: 12, borderRadius: '50%', background: COLORS[1] }}></span> Rejection</div>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          <div className="glass-panel" style={{ padding: '2rem' }}>
-            <h3 style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '0.75rem', marginBottom: '1rem' }}>📋 Decision Reasoning</h3>
-            <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '12px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              {prediction.reasoning_summary}
-            </div>
-          </div>
-
-          {prediction.llm_explanation && (
-            <div className="glass-panel" style={{ padding: '2rem', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
-              <h3 style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '0.75rem', marginBottom: '1rem' }}>🤖 Local AI Explanation</h3>
-              <div style={{ background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(17, 24, 39, 0.4) 100%)', padding: '1.5rem', borderRadius: '12px', color: 'var(--text-primary)', lineHeight: 1.6 }}>
-                {prediction.llm_explanation}
-              </div>
-            </div>
-          )}
         </div>
       </div>
       
-      <div style={{ textAlign: 'center' }}>
-        <button className="btn btn-primary" onClick={() => { setPrediction(null); navigate('/'); }}>
-          🔄 New Application
+      <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <button className="btn btn-primary" onClick={() => { setPrediction(null); navigate('/'); }} style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+          🔄 Start New Application
         </button>
       </div>
     </div>

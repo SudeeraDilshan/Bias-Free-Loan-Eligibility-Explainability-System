@@ -79,6 +79,9 @@ def parse_paysheet_salary_bytes(image_bytes: bytes):
             kw_net = re.compile(r'\b(net|nft|bank|rahx|take|remitt|payable)\b', re.IGNORECASE)
             kw_ignore = re.compile(r'\b(tot|total|earnings|gross|deduct|basic|etf|epf|yer|yee)\b', re.IGNORECASE)
             
+            kw_earnings = re.compile(r'\b(total\s*earnings|tot\s*earnings|gross\s*pay|gross|earnings|tot\s*earn)\b', re.IGNORECASE)
+            kw_deductions = re.compile(r'\b(total\s*deductions|tot\s*deductions|deductions|tot\s*deduct)\b', re.IGNORECASE)
+            
             merged = []
             i = 0
             while i < len(cleaned_tokens):
@@ -96,34 +99,42 @@ def parse_paysheet_salary_bytes(image_bytes: bytes):
                 merged.append(t)
                 i += 1
 
-            proximity_candidates = []
-            for idx, tok in enumerate(merged):
-                if kw_net.search(tok) and not kw_ignore.search(tok):
-                    for dist in range(1, min(6, len(merged) - idx)):
-                        candidate_token = merged[idx + dist]
-                        if kw_ignore.search(candidate_token):
-                            break
-                        norm_str = candidate_token.replace('O', '0').replace('o', '0').replace('V', '0').replace('l', '1').replace('1S1', '131')
-                        norm_str = re.sub(r'\s*\.\s*', '.', norm_str)
-                        
-                        num_matches = re.findall(r'\b\d{2,3}[,.\s]*\d{3}(?:\.\d{2})?\b', norm_str)
-                        for n_str in num_matches:
-                            clean_num = re.sub(r'[^\d.]', '', n_str)
-                            if clean_num.count('.') > 1:
-                                parts = clean_num.rsplit('.', 1)
-                                clean_num = parts[0].replace('.', '') + '.' + parts[1]
-                            try:
-                                val = float(clean_num)
-                                if 20_000 <= val <= 2_000_000 and not clean_num.startswith('000'):
-                                    proximity_candidates.append((dist, val))
-                            except ValueError:
-                                pass
+            def extract_val_near_kw(kw_regex, ignore_regex=None, min_val=20000):
+                cands = []
+                for idx, tok in enumerate(merged):
+                    if kw_regex.search(tok) and (not ignore_regex or not ignore_regex.search(tok)):
+                        for dist in range(1, min(8, len(merged) - idx)):
+                            candidate_token = merged[idx + dist]
+                            if ignore_regex and ignore_regex.search(candidate_token):
+                                break
+                            norm_str = candidate_token.replace('O', '0').replace('o', '0').replace('V', '0').replace('l', '1').replace('1S1', '131')
+                            norm_str = re.sub(r'\s*\.\s*', '.', norm_str)
+                            num_matches = re.findall(r'\b\d{2,3}[,.\s]*\d{3}(?:\.\d{2})?\b', norm_str)
+                            for n_str in num_matches:
+                                clean_num = re.sub(r'[^\d.]', '', n_str)
+                                if clean_num.count('.') > 1:
+                                    parts = clean_num.rsplit('.', 1)
+                                    clean_num = parts[0].replace('.', '') + '.' + parts[1]
+                                try:
+                                    val = float(clean_num)
+                                    if min_val <= val <= 2_000_000 and not clean_num.startswith('000'):
+                                        cands.append((dist, val))
+                                except ValueError:
+                                    pass
+                if cands:
+                    cands.sort(key=lambda x: (x[0], -x[1]))
+                    return cands[0][1]
+                return None
 
-            if proximity_candidates:
-                proximity_candidates.sort(key=lambda x: (x[0], -x[1]))
-                extracted_val = proximity_candidates[0][1]
-            else:
-                extracted_val = 100000.00
+            val_net = extract_val_near_kw(kw_net, kw_ignore, 20000)
+            val_earn = extract_val_near_kw(kw_earnings, None, 20000)
+            val_deduct = extract_val_near_kw(kw_deductions, None, 1000)
+
+            extracted_val = 100000.00
+            if val_earn and val_deduct:
+                extracted_val = val_earn - val_deduct
+            elif val_net:
+                extracted_val = val_net
 
             return extracted_val, f"{m_name} {yr} Net Pay", m_num, m_name, yr
     except Exception as e:

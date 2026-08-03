@@ -29,8 +29,8 @@ services:
       start_period: 40s
 
 
-  # Streamlit Frontend — run separately:
-  # streamlit run streamlit_app/app.py --server.port 8501
+  # React Frontend — run separately:
+  # cd frontend && npm run dev
 
   # Optional: PostgreSQL Database (if needed)
 

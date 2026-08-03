@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Home, BarChart2, Search, Scale, Info } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import logo from '../assets/logo.png';
 
 const Sidebar = () => {
   const [backendStatus, setBackendStatus] = useState('Checking...');
@@ -16,10 +17,8 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div style={{ marginBottom: '2rem' }}>
-        <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', color: 'var(--text-primary)' }}>
-          🏦 Loan System
-        </h2>
+      <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
+        <img src={logo} alt="Bank Logo" style={{ maxWidth: '100%', maxHeight: '90px', objectFit: 'contain' }} />
       </div>
 
       <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
@@ -33,7 +32,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to="/explainability" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           <Search size={20} />
-          <span>SHAP Explainability</span>
+          <span>Explainability</span>
         </NavLink>
         <NavLink to="/fairness" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           <Scale size={20} />

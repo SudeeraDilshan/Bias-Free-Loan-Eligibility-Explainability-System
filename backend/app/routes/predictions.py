@@ -25,6 +25,16 @@ async def predict_loan_eligibility(application: LoanApplicationInput) -> Predict
         # Preprocess application
         X, loan_id = preprocess_application(application)
         
+        # Log the values going to the model in the terminal
+        print(f"\n{'='*50}")
+        print(f"[{datetime.now().isoformat()}] NEW PREDICTION REQUEST")
+        print(f"Loan ID: {loan_id}")
+        print("Raw Application Data:")
+        print(application.dict())
+        print("\nPreprocessed Features (going to the model):")
+        print(X)
+        print(f"{'='*50}\n")
+        
         # Predict
         prediction = model_manager.model.predict(X)[0]
         probabilities = model_manager.model.predict_proba(X)[0]

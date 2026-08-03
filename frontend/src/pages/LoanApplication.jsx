@@ -17,6 +17,12 @@ const MIN_LOAN_AMOUNTS = {
   "Housing Loan": 1000000,
   "Vehicle Lease": 300000
 };
+const INTEREST_RATES = {
+  "Personal Loan": 18,
+  "Business/SME Loan": 14,
+  "Housing Loan": 11,
+  "Vehicle Lease": 15
+};
 const EMPLOYMENT_SECTORS = ["Private Sector", "Government", "Informal/Self-Employed"];
 
 const LoanApplication = ({ setPrediction }) => {
@@ -38,12 +44,14 @@ const LoanApplication = ({ setPrediction }) => {
     Education: "Graduate",
     Self_Employed: "No",
     Employment_Sector: "Private Sector",
-    ApplicantIncome_LKR: 184500,
+    ApplicantIncome_LKR: 0,
     CoapplicantIncome_LKR: 61940,
     Loan_Type: "Personal Loan",
     LoanAmount_LKR: 1180000,
     Loan_Amount_Term: 48,
-    Property_Region_SL: "Kandy"
+    Property_Region_SL: "Kandy",
+    Extra_Income: "",
+    Extra_Expenses: ""
   });
 
   const handleInputChange = (e) => {
@@ -118,12 +126,17 @@ const LoanApplication = ({ setPrediction }) => {
       return;
     }
 
+    const extraIncome = Number(formData.Extra_Income) || 0;
+    const extraExpenses = Number(formData.Extra_Expenses) || 0;
+    const baseIncome = paysheetData ? paysheetData.calculated_avg_salary : Number(formData.ApplicantIncome_LKR);
+    const finalApplicantIncome = baseIncome + extraIncome - extraExpenses;
+
     const payload = {
       Loan_ID: `LP${Math.floor(Date.now() / 1000)}`,
       ...formData,
-      ApplicantIncome_LKR: Number(formData.ApplicantIncome_LKR),
-      CoapplicantIncome_LKR: Number(formData.CoapplicantIncome_LKR),
-      LoanAmount_LKR: Number(formData.LoanAmount_LKR),
+      ApplicantIncome_LKR: Number(finalApplicantIncome.toFixed(2)),
+      CoapplicantIncome_LKR: Number(Number(formData.CoapplicantIncome_LKR).toFixed(2)),
+      LoanAmount_LKR: Number(Number(formData.LoanAmount_LKR).toFixed(2)),
       Loan_Amount_Term: Number(formData.Loan_Amount_Term),
       CRIB_Clearance: cribData.risk_grade
     };
@@ -147,7 +160,7 @@ const LoanApplication = ({ setPrediction }) => {
   };
 
   // Calculate EMI
-  const annualRate = 15;
+  const annualRate = INTEREST_RATES[formData.Loan_Type] || 15;
   const monthlyRate = (annualRate / 100) / 12;
   const emi = formData.LoanAmount_LKR * monthlyRate * Math.pow(1 + monthlyRate, formData.Loan_Amount_Term) / (Math.pow(1 + monthlyRate, formData.Loan_Amount_Term) - 1);
   const maxEMI = paysheetData ? paysheetData.calculated_avg_salary * 0.6 : formData.ApplicantIncome_LKR * 0.6;
@@ -159,8 +172,8 @@ const LoanApplication = ({ setPrediction }) => {
   return (
     <div className="animate-fade-in">
       <div className="glass-panel" style={{ padding: '2rem', marginBottom: '2rem', background: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)' }}>
-        <h1 style={{ margin: 0, fontSize: '2rem', color: 'white' }}>🏦 Bias-Free Loan Eligibility System</h1>
-        <p style={{ margin: '0.5rem 0 0', opacity: 0.8, color: 'white' }}>AI-powered prediction with full explainability & fairness analysis</p>
+        <h1 style={{ margin: 0, fontSize: '2rem', color: 'white' }}>FairCredit AI</h1>
+        <p style={{ margin: '0.5rem 0 0', opacity: 0.8, color: 'white' }}>Intelligent, unbiased loan assessments with transparent decision reasoning.</p>
       </div>
 
       {error && (
@@ -226,7 +239,7 @@ const LoanApplication = ({ setPrediction }) => {
 
             {paysheetData && !loadingPaysheets && (
               <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--success)' }}>
-                <CheckCircle size={16} style={{ display: 'inline', marginRight: '0.25rem', verticalAlign: 'middle' }}/> OCR Validated (Avg: LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2})})
+                <CheckCircle size={16} style={{ display: 'inline', marginRight: '0.25rem', verticalAlign: 'middle' }}/> OCR Validated (Avg: LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})})
                 <div style={{ marginTop: '0.25rem', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Detected: {paysheetData.months_detected}</div>
                 {!paysheetData.is_consecutive && <div style={{ color: 'var(--warning)', marginTop: '0.25rem' }}>⚠️ Warning: Months appear non-consecutive</div>}
               </div>
@@ -274,13 +287,18 @@ const LoanApplication = ({ setPrediction }) => {
               {EMPLOYMENT_SECTORS.map(sec => <option key={sec}>{sec}</option>)}
             </select>
           </div>
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Applicant Income (LKR)</label>
-            <input type="number" name="ApplicantIncome_LKR" value={formData.ApplicantIncome_LKR} onChange={handleInputChange} className="input-field" />
-          </div>
+
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Co-applicant Income (LKR)</label>
             <input type="number" name="CoapplicantIncome_LKR" value={formData.CoapplicantIncome_LKR} onChange={handleInputChange} className="input-field" />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Extra Income (LKR)</label>
+            <input type="number" name="Extra_Income" value={formData.Extra_Income} onChange={handleInputChange} className="input-field" placeholder="Optional" />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Extra Expenses (LKR)</label>
+            <input type="number" name="Extra_Expenses" value={formData.Extra_Expenses} onChange={handleInputChange} className="input-field" placeholder="Optional" />
           </div>
         </div>
 
@@ -313,11 +331,11 @@ const LoanApplication = ({ setPrediction }) => {
           </div>
         </div>
 
-        {isMinAmountValid && (
+        {isMinAmountValid && paysheetData && (
           <div style={{ padding: '1rem', background: isEmiValid ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', marginBottom: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <strong>Estimated EMI:</strong> LKR {emi.toLocaleString(undefined, {maximumFractionDigits: 2})} / month
+                <strong>Estimated EMI ({annualRate}% p.a.):</strong> LKR {emi.toLocaleString(undefined, {maximumFractionDigits: 2})} / month
               </div>
               <div>
                 <strong>Max Deductible (60%):</strong> LKR {maxEMI.toLocaleString(undefined, {maximumFractionDigits: 2})}
