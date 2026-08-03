@@ -12,7 +12,7 @@ A complete end-to-end machine learning system for loan eligibility prediction ta
 - **Local AI**: Natural language decision summaries via an offline Small Language Model (Qwen2.5-0.5B)
 - **Fairness**: Bias detection using demographic parity, equal opportunity, and disparate impact metrics
 - **Performance**: XGBoost classifier trained on Sri Lanka loan data with 1,000 records
-- **Full-Stack**: FastAPI backend + Streamlit frontend — pure Python, no Node.js required
+- **Full-Stack**: FastAPI backend + React.js frontend
 - **Transparency**: Detailed reasoning reports for every prediction decision
 
 ---
@@ -42,7 +42,7 @@ A complete end-to-end machine learning system for loan eligibility prediction ta
 
 ### 🌐 Full-Stack Application
 - **Backend**: FastAPI (port 8000) with automatic Swagger docs at `/docs`
-- **Frontend**: Streamlit (port 8501) — 5-page interactive UI, pure Python
+- **Frontend**: React.js (port 3000) — 5-page highly interactive modern UI
 - **Smart Data Entry**: Automated CRIB Report PDF upload and Risk Grade extraction
 - **API Endpoints**:
   - `POST /predict` — prediction + SHAP + LLM explanation
@@ -55,7 +55,7 @@ A complete end-to-end machine learning system for loan eligibility prediction ta
 
 ```
 ┌────────────────────────────────────────────────┐
-│            Streamlit Frontend :8501            │
+│            React Frontend :3000                │
 │  Loan Form → Results → SHAP → Fairness → About │
 └───────────────────┬────────────────────────────┘
                     │  HTTP POST /predict

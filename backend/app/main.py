@@ -21,6 +21,7 @@ from app.services.model_manager import model_manager
 from app.services.llm_explainer import llm_explainer
 from app.routes.health import router as health_router
 from app.routes.predictions import router as predictions_router
+from app.routes.extractions import router as extractions_router
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -54,6 +55,7 @@ app.add_middleware(
 # Include routers
 app.include_router(health_router, tags=["Health"])
 app.include_router(predictions_router, tags=["Predictions"])
+app.include_router(extractions_router, tags=["Document Extraction"])
 
 @app.on_event("startup")
 async def startup_event():

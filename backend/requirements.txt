@@ -24,3 +24,8 @@ psycopg2-binary==2.9.9
 transformers>=4.40.0
 accelerate>=0.29.0
 torch>=2.0.0
+
+# Document Extraction (Migrated from Frontend)
+PyPDF2>=3.0.0
+easyocr>=1.7.0
+Pillow>=10.0.0
