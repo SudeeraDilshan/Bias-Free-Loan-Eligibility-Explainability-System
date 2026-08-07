@@ -180,6 +180,13 @@ const LoanApplication = ({ setPrediction }) => {
   
   const allowedAmounts = ALLOWED_LOAN_AMOUNTS[formData.Loan_Type];
   const minAmount = allowedAmounts[0];
+  
+  let maxDiscreteLoan = 0;
+  for (let amt of allowedAmounts) {
+    if (amt <= maxPossibleLoan) {
+      maxDiscreteLoan = amt;
+    }
+  }
 
   return (
     <div className="animate-fade-in">
@@ -343,21 +350,42 @@ const LoanApplication = ({ setPrediction }) => {
         </div>
 
         {paysheetData && (
-          <div style={{ padding: '1rem', background: isEmiValid ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', marginBottom: '2rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <strong>Estimated EMI ({annualRate}% p.a.):</strong> LKR {emi.toLocaleString(undefined, {maximumFractionDigits: 2})} / month
+          <div className="glass-panel" style={{ padding: '1.5rem', marginBottom: '2rem', border: `1px solid ${isEmiValid ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}` }}>
+            <h4 style={{ marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}>
+              💰 Affordability Check
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '8px' }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Estimated Monthly Payment (EMI)</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: isEmiValid ? 'var(--text-primary)' : 'var(--danger)' }}>
+                  LKR {emi.toLocaleString(undefined, {maximumFractionDigits: 2})}
+                </div>
               </div>
-              <div>
-                <strong>Max Deductible (60%):</strong> LKR {maxEMI.toLocaleString(undefined, {maximumFractionDigits: 2})}
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '8px' }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Your Max Allowed Payment</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--success)' }}>
+                  LKR {maxEMI.toLocaleString(undefined, {maximumFractionDigits: 2})}
+                </div>
               </div>
             </div>
+
             {!isEmiValid && (
-              <div style={{ marginTop: '0.75rem', color: 'var(--danger)', fontSize: '0.9rem', lineHeight: '1.4' }}>
-                ⚠️ <strong>EMI exceeds 60% of income.</strong><br/>
-                {maxPossibleLoan >= minAmount 
-                  ? `Based on your income, the maximum available loan amount for a ${term}-month term is LKR ${maxPossibleLoan.toLocaleString(undefined, {maximumFractionDigits: 2})}.`
-                  : `Based on your income, you do not qualify for the minimum LKR ${minAmount.toLocaleString()} required for a ${formData.Loan_Type} at a ${term}-month term.`}
+              <div style={{ background: 'rgba(239, 68, 68, 0.1)', borderLeft: '4px solid var(--danger)', padding: '1rem', borderRadius: '4px' }}>
+                <div style={{ color: 'var(--danger)', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                  ⚠️ Monthly Payment is Too High
+                </div>
+                <div style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                  {maxDiscreteLoan >= minAmount 
+                    ? <span>To keep your payments affordable, the <strong>maximum loan amount</strong> you can qualify for over a {term}-month term is <strong style={{color: '#60a5fa'}}>LKR {maxDiscreteLoan.toLocaleString()}</strong>.</span>
+                    : <span>Your income does not support the minimum LKR {minAmount.toLocaleString()} required for a {formData.Loan_Type} at a {term}-month term. Please try increasing the loan term.</span>
+                  }
+                </div>
+              </div>
+            )}
+            
+            {isEmiValid && (
+              <div style={{ color: 'var(--success)', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <CheckCircle size={16} /> Your estimated monthly payment is within safe, affordable limits.
               </div>
             )}
           </div>
