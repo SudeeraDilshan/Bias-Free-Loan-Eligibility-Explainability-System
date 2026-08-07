@@ -188,6 +188,11 @@ const LoanApplication = ({ setPrediction }) => {
     }
   }
 
+  const paysheetNIC = paysheetData?.extracted_nic;
+  const cribNIC = cribData?.extracted_nic;
+  const isNicMismatch = Boolean(paysheetNIC && cribNIC && paysheetNIC !== cribNIC);
+  const isPaysheetInconsistent = paysheetData?.is_nic_consistent === false;
+
   return (
     <div className="animate-fade-in">
       <div className="glass-panel" style={{ padding: '2rem', marginBottom: '2rem', background: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)' }}>
@@ -258,24 +263,45 @@ const LoanApplication = ({ setPrediction }) => {
             )}
 
             {paysheetData && !loadingPaysheets && (
-              <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--success)', fontWeight: 'bold', marginBottom: '0.75rem', fontSize: '0.95rem' }}>
-                  <CheckCircle size={18} /> OCR Data Validated
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Calculated Avg Income:</span>
-                    <strong style={{ color: 'var(--text-primary)' }}>LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+              <div style={{ 
+                marginTop: '1rem', 
+                padding: '1rem', 
+                background: isPaysheetInconsistent ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)', 
+                border: `1px solid ${isPaysheetInconsistent ? 'rgba(239, 68, 68, 0.2)' : 'rgba(16, 185, 129, 0.2)'}`, 
+                borderRadius: '8px' 
+              }}>
+                {isPaysheetInconsistent ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--danger)', fontWeight: 'bold', fontSize: '0.95rem' }}>
+                    <AlertTriangle size={18} /> Fraud Alert: Multiple Identities
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--text-secondary)', marginRight: '1rem' }}>Detected Months:</span>
-                    <strong style={{ color: 'var(--text-primary)', textAlign: 'right' }}>{paysheetData.months_detected}</strong>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--success)', fontWeight: 'bold', marginBottom: '0.75rem', fontSize: '0.95rem' }}>
+                    <CheckCircle size={18} /> OCR Data Validated
                   </div>
-                </div>
-                {!paysheetData.is_consecutive && (
-                  <div style={{ marginTop: '0.75rem', padding: '0.5rem', background: 'rgba(245, 158, 11, 0.1)', color: 'var(--warning)', borderRadius: '4px', fontSize: '0.85rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                    <span>⚠️</span> <span>The detected months do not appear to be consecutive. Please verify the documents.</span>
+                )}
+                
+                {isPaysheetInconsistent ? (
+                  <div style={{ marginTop: '0.75rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
+                    The uploaded paysheets belong to different individuals (mismatched NICs). Average salary calculation has been aborted.
                   </div>
+                ) : (
+                  <>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.5rem' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
+                        <span style={{ color: 'var(--text-secondary)' }}>Calculated Avg Income:</span>
+                        <strong style={{ color: 'var(--text-primary)' }}>LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', alignItems: 'flex-start' }}>
+                        <span style={{ color: 'var(--text-secondary)', marginRight: '1rem' }}>Detected Months:</span>
+                        <strong style={{ color: 'var(--text-primary)', textAlign: 'right' }}>{paysheetData.months_detected}</strong>
+                      </div>
+                    </div>
+                    {!paysheetData.is_consecutive && (
+                      <div style={{ marginTop: '0.75rem', padding: '0.5rem', background: 'rgba(245, 158, 11, 0.1)', color: 'var(--warning)', borderRadius: '4px', fontSize: '0.85rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                        <span>⚠️</span> <span>The detected months do not appear to be consecutive. Please verify the documents.</span>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             )}
@@ -374,7 +400,7 @@ const LoanApplication = ({ setPrediction }) => {
           </div>
         </div>
 
-        {paysheetData && (
+        {paysheetData && !isPaysheetInconsistent && !isNicMismatch && (
           <div className="glass-panel" style={{ padding: '1.5rem', marginBottom: '2rem', border: `1px solid ${isEmiValid ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}` }}>
             <h4 style={{ marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}>
               💰 Affordability Check
@@ -416,7 +442,17 @@ const LoanApplication = ({ setPrediction }) => {
           </div>
         )}
 
-        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }} disabled={submitting || !paysheetData || !cribData || !isEmiValid}>
+        {isNicMismatch && !isPaysheetInconsistent && (
+          <div style={{ padding: '1rem', background: 'rgba(239, 68, 68, 0.1)', color: 'var(--danger)', borderRadius: '8px', marginBottom: '2rem', border: '1px solid var(--danger)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <AlertTriangle size={24} />
+            <div>
+              <strong>Fraud Alert: Identity Mismatch</strong><br/>
+              <span style={{ fontSize: '0.9rem' }}>The NIC number on the Paysheets ({paysheetNIC}) does not match the NIC on the CRIB Report ({cribNIC}). Submission blocked.</span>
+            </div>
+          </div>
+        )}
+
+        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }} disabled={submitting || !paysheetData || !cribData || !isEmiValid || isNicMismatch || isPaysheetInconsistent}>
           {submitting ? 'Processing...' : '🔮 Predict Loan Eligibility'}
         </button>
       </form>

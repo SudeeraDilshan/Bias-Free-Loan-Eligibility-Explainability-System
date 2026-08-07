@@ -135,17 +135,24 @@ def parse_paysheet_salary_bytes(image_bytes: bytes):
                 extracted_val = val_earn - val_deduct
             elif val_net:
                 extracted_val = val_net
+                
+            raw_text_no_spaces = "".join(cleaned_tokens).upper()
+            import re
+            nic_matches = re.findall(r'(\d{9}[VX]|\d{12})', raw_text_no_spaces)
+            extracted_nic = nic_matches[0] if nic_matches else None
 
-            return extracted_val, f"{m_name} {yr} Net Pay", m_num, m_name, yr
+            return extracted_val, f"{m_name} {yr} Net Pay", m_num, m_name, yr, extracted_nic
     except Exception as e:
         print(f"OCR Parsing info: {e}")
-    return 100000.00, "Estimated Net Pay", 0, "Unknown Month", 2026
+    return 100000.00, "Estimated Net Pay", 0, "Unknown Month", 2026, None
 
 class PaysheetResponse(BaseModel):
     calculated_avg_salary: float
     extracted_salaries: List[Dict[str, Any]]
     is_consecutive: bool
     months_detected: str
+    extracted_nic: str | None = None
+    is_nic_consistent: bool = True
 
 @router.post("/paysheets", response_model=PaysheetResponse)
 async def extract_paysheets(files: List[UploadFile] = File(...)):
@@ -155,14 +162,15 @@ async def extract_paysheets(files: List[UploadFile] = File(...)):
     extracted = []
     for file in files:
         contents = await file.read()
-        val, label, m_num, m_name, yr = parse_paysheet_salary_bytes(contents)
+        val, label, m_num, m_name, yr, nic = parse_paysheet_salary_bytes(contents)
         extracted.append({
             "filename": file.filename,
             "value": val,
             "label": label,
             "month_num": m_num,
             "month_name": m_name,
-            "year": yr
+            "year": yr,
+            "nic": nic
         })
     
     total_sal = sum(x["value"] for x in extracted)
@@ -177,16 +185,27 @@ async def extract_paysheets(files: List[UploadFile] = File(...)):
     is_consecutive = (sorted_months[0][1] > 0 and idx1 == idx0 + 1 and idx2 == idx1 + 1)
     month_str_list = ", ".join([f"{m[2]} {m[0]}" for m in sorted_months])
     
+    nics = [x["nic"] for x in extracted if x["nic"]]
+    unique_nics = set(nics)
+    primary_nic = max(unique_nics, key=nics.count) if unique_nics else None
+    is_nic_consistent = len(unique_nics) <= 1
+    
+    if not is_nic_consistent:
+        avg_salary = 0.0
+        
     return PaysheetResponse(
         calculated_avg_salary=avg_salary,
         extracted_salaries=extracted,
         is_consecutive=is_consecutive,
-        months_detected=month_str_list
+        months_detected=month_str_list,
+        extracted_nic=primary_nic,
+        is_nic_consistent=is_nic_consistent
     )
 
 class CribResponse(BaseModel):
     risk_grade: str
     extracted_raw: str
+    extracted_nic: str | None = None
 
 @router.post("/crib", response_model=CribResponse)
 async def extract_crib(file: UploadFile = File(...)):
@@ -197,6 +216,10 @@ async def extract_crib(file: UploadFile = File(...)):
         contents = await file.read()
         reader = PyPDF2.PdfReader(io.BytesIO(contents))
         text = "".join(page.extract_text() for page in reader.pages)
+        
+        raw_text_no_spaces = text.replace(" ", "").upper()
+        nic_matches = re.findall(r'(\d{9}[VX]|\d{12})', raw_text_no_spaces)
+        extracted_nic = nic_matches[0] if nic_matches else None
         
         match = re.search(r'(?:Score)?([A-E][1-3])\s*Risk Grade', text, re.IGNORECASE)
         extracted_risk = "Average Risk"
@@ -216,7 +239,8 @@ async def extract_crib(file: UploadFile = File(...)):
             
         return CribResponse(
             risk_grade=extracted_risk,
-            extracted_raw=raw_grade
+            extracted_raw=raw_grade,
+            extracted_nic=extracted_nic
         )
     except Exception as e:
         print(f"Error reading PDF: {e}")
