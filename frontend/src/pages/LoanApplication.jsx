@@ -241,26 +241,42 @@ const LoanApplication = ({ setPrediction }) => {
             </label>
             
             {paysheetFiles.length > 0 && (
-              <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ marginTop: '1rem', background: 'rgba(255,255,255,0.03)', padding: '0.75rem', borderRadius: '8px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 'bold' }}>Attached Files</div>
                 {paysheetFiles.map((file, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                    <CheckCircle size={14} color="var(--success)" /> {file.name} attached
+                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                    <CheckCircle size={14} color="var(--accent-primary)" /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{file.name}</span>
                   </div>
                 ))}
               </div>
             )}
             
             {loadingPaysheets && paysheetFiles.length === 3 && !paysheetData && (
-              <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--accent-primary)' }}>
+              <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '8px', color: 'var(--accent-primary)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 Processing OCR extraction...
               </div>
             )}
 
             {paysheetData && !loadingPaysheets && (
-              <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--success)' }}>
-                <CheckCircle size={16} style={{ display: 'inline', marginRight: '0.25rem', verticalAlign: 'middle' }}/> OCR Validated (Avg: LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})})
-                <div style={{ marginTop: '0.25rem', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Detected: {paysheetData.months_detected}</div>
-                {!paysheetData.is_consecutive && <div style={{ color: 'var(--warning)', marginTop: '0.25rem' }}>⚠️ Warning: Months appear non-consecutive</div>}
+              <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--success)', fontWeight: 'bold', marginBottom: '0.75rem', fontSize: '0.95rem' }}>
+                  <CheckCircle size={18} /> OCR Data Validated
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>Calculated Avg Income:</span>
+                    <strong style={{ color: 'var(--text-primary)' }}>LKR {paysheetData.calculated_avg_salary.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', alignItems: 'flex-start' }}>
+                    <span style={{ color: 'var(--text-secondary)', marginRight: '1rem' }}>Detected Months:</span>
+                    <strong style={{ color: 'var(--text-primary)', textAlign: 'right' }}>{paysheetData.months_detected}</strong>
+                  </div>
+                </div>
+                {!paysheetData.is_consecutive && (
+                  <div style={{ marginTop: '0.75rem', padding: '0.5rem', background: 'rgba(245, 158, 11, 0.1)', color: 'var(--warning)', borderRadius: '4px', fontSize: '0.85rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                    <span>⚠️</span> <span>The detected months do not appear to be consecutive. Please verify the documents.</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -273,20 +289,29 @@ const LoanApplication = ({ setPrediction }) => {
             </label>
 
             {cribFile && (
-              <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                <CheckCircle size={14} color="var(--success)" /> {cribFile.name} attached
+              <div style={{ marginTop: '1rem', background: 'rgba(255,255,255,0.03)', padding: '0.75rem', borderRadius: '8px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 'bold' }}>Attached File</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-primary)' }}>
+                  <CheckCircle size={14} color="var(--accent-primary)" /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{cribFile.name}</span>
+                </div>
               </div>
             )}
 
             {loadingCrib && cribFile && !cribData && (
-              <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--accent-primary)' }}>
+              <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '8px', color: 'var(--accent-primary)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 Processing PDF extraction...
               </div>
             )}
 
             {cribData && !loadingCrib && (
-              <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--success)' }}>
-                <CheckCircle size={16} style={{ display: 'inline', marginRight: '0.25rem', verticalAlign: 'middle' }}/> PDF Processed (Grade: {cribData.risk_grade})
+              <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--success)', fontWeight: 'bold', marginBottom: '0.75rem', fontSize: '0.95rem' }}>
+                  <CheckCircle size={18} /> PDF Processed Successfully
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
+                  <span style={{ color: 'var(--text-secondary)' }}>Assessed Risk Grade:</span>
+                  <strong style={{ color: 'var(--text-primary)' }}>{cribData.risk_grade}</strong>
+                </div>
               </div>
             )}
           </div>
