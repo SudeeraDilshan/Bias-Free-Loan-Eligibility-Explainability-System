@@ -11,11 +11,11 @@ const SL_REGIONS = [
 ];
 
 const LOAN_TYPES = ["Personal Loan", "Business/SME Loan", "Housing Loan", "Vehicle Lease"];
-const MIN_LOAN_AMOUNTS = {
-  "Personal Loan": 50000,
-  "Business/SME Loan": 500000,
-  "Housing Loan": 1000000,
-  "Vehicle Lease": 300000
+const ALLOWED_LOAN_AMOUNTS = {
+  "Personal Loan": [50000, 100000, 200000, 350000, 500000, 1000000, 2000000, 5000000],
+  "Business/SME Loan": [500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000],
+  "Housing Loan": [1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000],
+  "Vehicle Lease": [300000, 500000, 1000000, 2000000, 5000000, 10000000, 15000000]
 };
 const INTEREST_RATES = {
   "Personal Loan": 18,
@@ -47,7 +47,7 @@ const LoanApplication = ({ setPrediction }) => {
     ApplicantIncome_LKR: 0,
     CoapplicantIncome_LKR: 61940,
     Loan_Type: "Personal Loan",
-    LoanAmount_LKR: 1180000,
+    LoanAmount_LKR: ALLOWED_LOAN_AMOUNTS["Personal Loan"][0],
     Loan_Amount_Term: 48,
     Property_Region_SL: "Kandy",
     Extra_Income: "",
@@ -56,7 +56,15 @@ const LoanApplication = ({ setPrediction }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'Loan_Type') {
+      setFormData(prev => ({ 
+        ...prev, 
+        [name]: value,
+        LoanAmount_LKR: ALLOWED_LOAN_AMOUNTS[value][0]
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handlePaysheetSelect = async (e) => {
@@ -162,12 +170,16 @@ const LoanApplication = ({ setPrediction }) => {
   // Calculate EMI
   const annualRate = INTEREST_RATES[formData.Loan_Type] || 15;
   const monthlyRate = (annualRate / 100) / 12;
-  const emi = formData.LoanAmount_LKR * monthlyRate * Math.pow(1 + monthlyRate, formData.Loan_Amount_Term) / (Math.pow(1 + monthlyRate, formData.Loan_Amount_Term) - 1);
+  const term = Number(formData.Loan_Amount_Term) || 1; // avoid division by zero
+  const factor = Math.pow(1 + monthlyRate, term);
+  const emi = formData.LoanAmount_LKR * monthlyRate * factor / (factor - 1);
   const maxEMI = paysheetData ? paysheetData.calculated_avg_salary * 0.6 : formData.ApplicantIncome_LKR * 0.6;
   const isEmiValid = emi <= maxEMI;
   
-  const minAmount = MIN_LOAN_AMOUNTS[formData.Loan_Type];
-  const isMinAmountValid = formData.LoanAmount_LKR >= minAmount;
+  const maxPossibleLoan = Math.max(0, maxEMI * (factor - 1) / (monthlyRate * factor));
+  
+  const allowedAmounts = ALLOWED_LOAN_AMOUNTS[formData.Loan_Type];
+  const minAmount = allowedAmounts[0];
 
   return (
     <div className="animate-fade-in">
@@ -312,12 +324,11 @@ const LoanApplication = ({ setPrediction }) => {
           </div>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Loan Amount (LKR)</label>
-            <input type="number" name="LoanAmount_LKR" value={formData.LoanAmount_LKR} onChange={handleInputChange} className="input-field" style={{ borderColor: !isMinAmountValid ? 'var(--danger)' : '' }} />
-            {!isMinAmountValid && (
-              <div style={{ fontSize: '0.8rem', color: 'var(--danger)', marginTop: '0.3rem' }}>
-                Minimum: {minAmount.toLocaleString()} LKR
-              </div>
-            )}
+            <select name="LoanAmount_LKR" value={formData.LoanAmount_LKR} onChange={handleInputChange} className="input-field">
+              {ALLOWED_LOAN_AMOUNTS[formData.Loan_Type].map(amt => (
+                <option key={amt} value={amt}>{amt.toLocaleString()} LKR</option>
+              ))}
+            </select>
           </div>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Loan Term (Months)</label>
@@ -331,7 +342,7 @@ const LoanApplication = ({ setPrediction }) => {
           </div>
         </div>
 
-        {isMinAmountValid && paysheetData && (
+        {paysheetData && (
           <div style={{ padding: '1rem', background: isEmiValid ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', marginBottom: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
@@ -342,14 +353,17 @@ const LoanApplication = ({ setPrediction }) => {
               </div>
             </div>
             {!isEmiValid && (
-              <div style={{ marginTop: '0.5rem', color: 'var(--danger)', fontSize: '0.9rem' }}>
-                ⚠️ EMI exceeds 60% of income. Please increase term or reduce loan amount.
+              <div style={{ marginTop: '0.75rem', color: 'var(--danger)', fontSize: '0.9rem', lineHeight: '1.4' }}>
+                ⚠️ <strong>EMI exceeds 60% of income.</strong><br/>
+                {maxPossibleLoan >= minAmount 
+                  ? `Based on your income, the maximum available loan amount for a ${term}-month term is LKR ${maxPossibleLoan.toLocaleString(undefined, {maximumFractionDigits: 2})}.`
+                  : `Based on your income, you do not qualify for the minimum LKR ${minAmount.toLocaleString()} required for a ${formData.Loan_Type} at a ${term}-month term.`}
               </div>
             )}
           </div>
         )}
 
-        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }} disabled={submitting || !paysheetData || !cribData || !isEmiValid || !isMinAmountValid}>
+        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }} disabled={submitting || !paysheetData || !cribData || !isEmiValid}>
           {submitting ? 'Processing...' : '🔮 Predict Loan Eligibility'}
         </button>
       </form>
